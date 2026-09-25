@@ -1,0 +1,59 @@
+{
+  "experiment_name": "exp4_sampling",
+  "timestamp": "2026-09-25T12:24:54.845056",
+  "checkpoint_evaluated": "checkpoints\\exp2_longer_training\\best.pt",
+  "prompt": "The ",
+  "max_new_tokens": 100,
+  "seed": 42,
+  "samples": [
+    {
+      "setting": "Greedy (argmax)",
+      "greedy": true,
+      "temperature": 1.0,
+      "top_k": null,
+      "output": "The the the the the the the the the the the the the the the to the the the the the the the the the the t"
+    },
+    {
+      "setting": "Temperature 0.5 (low entropy)",
+      "greedy": false,
+      "temperature": 0.5,
+      "top_k": null,
+      "output": "The tithe me we the we tho thay tho isoushe and trisolit the the s s whe the the who there thandico the "
+    },
+    {
+      "setting": "Temperature 0.8 (balanced)",
+      "greedy": false,
+      "temperature": 0.8,
+      "top_k": null,
+      "output": "The titherey wrere oulle theve coustid thare. this osl t s o the foryou, wan than hore whethean'tche uly"
+    },
+    {
+      "setting": "Temperature 1.0 (standard)",
+      "greedy": false,
+      "temperature": 1.0,
+      "top_k": null,
+      "output": "The tithey y wrere owele se hay pe tieaded\nwandeitinsl t  toouk. coryou,\n\n\n\n\nWhand con whethnth'tcharson"
+    },
+    {
+      "setting": "Top-k 5 (T=0.8)",
+      "greedy": false,
+      "temperature": 0.8,
+      "top_k": 5,
+      "output": "The titheren we the we thares hare tido arede thit to the to the so whe than the who trthe thandid thath"
+    },
+    {
+      "setting": "Top-k 10 (T=0.8)",
+      "greedy": false,
+      "temperature": 0.8,
+      "top_k": 10,
+      "output": "The titherey wrere oulle theve the tidou, cou thitins the ar the coryou than thed ho s thestsandiche sey"
+    },
+    {
+      "setting": "Top-k 20 (T=0.8)",
+      "greedy": false,
+      "temperature": 0.8,
+      "top_k": 20,
+      "output": "The titherey wrere oulle theve coustid thare. this osl t s o the foryou, wan than hore whetheandiche uly"
+    }
+  ]
+}

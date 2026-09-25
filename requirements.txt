@@ -1,0 +1,14 @@
+# MiniGPT - Core Dependencies
+# Phase 1: Educational GPT-style Transformer implementation from scratch
+
+# Deep Learning framework
+torch>=2.0.0
+
+# Scientific computing and array operations
+numpy>=1.24.0
+
+# Progress bar utility for training loops and downloads
+tqdm>=4.65.0
+
+# HTTP library for fetching sample datasets (e.g. TinyShakespeare)
+requests>=2.31.0

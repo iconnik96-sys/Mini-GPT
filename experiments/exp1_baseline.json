@@ -1,0 +1,90 @@
+{
+  "experiment_name": "exp1_baseline",
+  "timestamp": "2026-09-25T12:23:57.348684",
+  "seed": 1337,
+  "model_architecture": {
+    "n_layer": 2,
+    "n_head": 4,
+    "n_embd": 64,
+    "block_size": 64,
+    "vocab_size": 52,
+    "dropout": 0.1,
+    "trainable_parameters": 110336
+  },
+  "training_hyperparameters": {
+    "batch_size": 16,
+    "learning_rate": 0.001,
+    "max_iters": 150,
+    "eval_interval": 25,
+    "eval_iters": 10,
+    "device": "cpu"
+  },
+  "dataset_info": {
+    "vocab_size": 52,
+    "train_tokens": 3342,
+    "val_tokens": 372
+  },
+  "metrics": {
+    "final_train_loss": 2.2380213260650637,
+    "final_val_loss": 2.6535389184951783,
+    "best_val_loss": 2.6535389184951783,
+    "train_perplexity": 9.3748,
+    "val_perplexity": 14.2042,
+    "best_val_perplexity": 14.2042,
+    "training_duration_sec": 8.37,
+    "tokens_processed": 153600,
+    "tokens_per_second": 18349.4
+  },
+  "loss_history": {
+    "0": {
+      "train": 3.9514651536941527,
+      "val": 3.963578939437866
+    },
+    "25": {
+      "train": 2.923503804206848,
+      "val": 2.9714711189270018
+    },
+    "50": {
+      "train": 2.596792483329773,
+      "val": 2.792030143737793
+    },
+    "75": {
+      "train": 2.4608532190322876,
+      "val": 2.734945058822632
+    },
+    "100": {
+      "train": 2.3433167219161986,
+      "val": 2.706524658203125
+    },
+    "125": {
+      "train": 2.277204704284668,
+      "val": 2.670100235939026
+    },
+    "150": {
+      "train": 2.2380213260650637,
+      "val": 2.6535389184951783
+    }
+  },
+  "checkpoint_paths": {
+    "best": "checkpoints\\exp1_baseline\\best.pt",
+    "latest": "checkpoints\\exp1_baseline\\latest.pt"
+  },
+  "generations": [
+    {
+      "config_name": "Greedy",
+      "prompt": "The ",
+      "greedy": true,
+      "temperature": 1.0,
+      "top_k": null,
+      "generated_text": "The the the the the the the the the the the the the the the the the the the the the the the the the the "
+    },
+    {
+      "config_name": "Temp 0.8 Top-k 10",
+      "prompt": "The ",
+      "greedy": false,
+      "temperature": 0.8,
+      "top_k": 10,
+      "generated_text": "The ton the\nither he tave thisu cay hally, anthe tho the ores s an tithitris ot s then han athath ms\nCic"
+    }
+  ]
+}

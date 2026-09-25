@@ -1,0 +1,106 @@
+{
+  "experiment_name": "exp2_longer_training",
+  "timestamp": "2026-09-25T12:24:23.793884",
+  "seed": 1337,
+  "model_architecture": {
+    "n_layer": 2,
+    "n_head": 4,
+    "n_embd": 64,
+    "block_size": 64,
+    "vocab_size": 52,
+    "dropout": 0.1,
+    "trainable_parameters": 110336
+  },
+  "training_hyperparameters": {
+    "batch_size": 16,
+    "learning_rate": 0.001,
+    "max_iters": 500,
+    "eval_interval": 50,
+    "eval_iters": 10,
+    "device": "cpu"
+  },
+  "dataset_info": {
+    "vocab_size": 52,
+    "train_tokens": 3342,
+    "val_tokens": 372
+  },
+  "metrics": {
+    "final_train_loss": 1.6894237875938416,
+    "final_val_loss": 2.7392755270004274,
+    "best_val_loss": 2.6363635301589965,
+    "train_perplexity": 5.4164,
+    "val_perplexity": 15.4758,
+    "best_val_perplexity": 13.9623,
+    "training_duration_sec": 25.96,
+    "tokens_processed": 512000,
+    "tokens_per_second": 19725.2
+  },
+  "loss_history": {
+    "0": {
+      "train": 3.9514651536941527,
+      "val": 3.963578939437866
+    },
+    "50": {
+      "train": 2.6102646589279175,
+      "val": 2.8009844541549684
+    },
+    "100": {
+      "train": 2.386329412460327,
+      "val": 2.697863531112671
+    },
+    "150": {
+      "train": 2.2765146255493165,
+      "val": 2.671810007095337
+    },
+    "200": {
+      "train": 2.1861058950424193,
+      "val": 2.665063238143921
+    },
+    "250": {
+      "train": 2.102340340614319,
+      "val": 2.6363635301589965
+    },
+    "300": {
+      "train": 1.9983543634414673,
+      "val": 2.6742796182632445
+    },
+    "350": {
+      "train": 1.9230900168418885,
+      "val": 2.6990108728408813
+    },
+    "400": {
+      "train": 1.8129966735839844,
+      "val": 2.6692985773086546
+    },
+    "450": {
+      "train": 1.7459144830703734,
+      "val": 2.689401388168335
+    },
+    "500": {
+      "train": 1.6894237875938416,
+      "val": 2.7392755270004274
+    }
+  },
+  "checkpoint_paths": {
+    "best": "checkpoints\\exp2_longer_training\\best.pt",
+    "latest": "checkpoints\\exp2_longer_training\\latest.pt"
+  },
+  "generations": [
+    {
+      "config_name": "Greedy",
+      "prompt": "The ",
+      "greedy": true,
+      "temperature": 1.0,
+      "top_k": null,
+      "generated_text": "The athe s thelithe the s to sunowhell they weroul tre the seatr se to surellity, he widit to the to the"
+    },
+    {
+      "config_name": "Temp 0.8 Top-k 10",
+      "prompt": "The ",
+      "greedy": false,
+      "temperature": 0.8,
+      "top_k": 10,
+      "generated_text": "The tonkne thather patatr trisug ay hally.\n\nFirst Citizen:\nThes malll at so mot satrme canansellve sed. "
+    }
+  ]
+}

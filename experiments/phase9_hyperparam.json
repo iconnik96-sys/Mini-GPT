@@ -1,0 +1,106 @@
+{
+  "experiment_name": "phase9_hyperparam",
+  "timestamp": "2026-09-25T12:44:42.242245",
+  "seed": 1337,
+  "model_architecture": {
+    "n_layer": 4,
+    "n_head": 4,
+    "n_embd": 128,
+    "block_size": 64,
+    "vocab_size": 88,
+    "dropout": 0.1,
+    "trainable_parameters": 822016
+  },
+  "training_hyperparameters": {
+    "batch_size": 16,
+    "learning_rate": 0.001,
+    "max_iters": 150,
+    "eval_interval": 25,
+    "eval_iters": 10,
+    "device": "cpu"
+  },
+  "dataset_info": {
+    "vocab_size": 88,
+    "train_tokens": 18231,
+    "val_tokens": 2026
+  },
+  "metrics": {
+    "final_train_loss": 2.17458233833313,
+    "final_val_loss": 2.701676940917969,
+    "best_val_loss": 2.701676940917969,
+    "train_perplexity": 8.7985,
+    "val_perplexity": 14.9047,
+    "best_val_perplexity": 14.9047,
+    "training_duration_sec": 24.84,
+    "tokens_processed": 153600,
+    "tokens_per_second": 6182.6
+  },
+  "loss_history": {
+    "0": {
+      "train": 4.498011302947998,
+      "val": 4.50635404586792
+    },
+    "25": {
+      "train": 2.9271581888198854,
+      "val": 3.0884644269943236
+    },
+    "50": {
+      "train": 2.646214318275452,
+      "val": 2.9679922342300413
+    },
+    "75": {
+      "train": 2.497635912895203,
+      "val": 2.8502022504806517
+    },
+    "100": {
+      "train": 2.4035186529159547,
+      "val": 2.846243977546692
+    },
+    "125": {
+      "train": 2.3039973855018614,
+      "val": 2.718261551856995
+    },
+    "150": {
+      "train": 2.17458233833313,
+      "val": 2.701676940917969
+    }
+  },
+  "checkpoint_paths": {
+    "best": "checkpoints\\phase9_hyperparam\\best.pt",
+    "latest": "checkpoints\\phase9_hyperparam\\latest.pt"
+  },
+  "generations": [
+    {
+      "config_name": "Greedy",
+      "prompt": "public class UserService {",
+      "greedy": true,
+      "temperature": 1.0,
+      "top_k": null,
+      "generated_text": "public class UserService {\n                                                                                                   "
+    },
+    {
+      "config_name": "Temp 0.8 Top-k 10",
+      "prompt": "public class UserService {",
+      "greedy": false,
+      "temperature": 0.8,
+      "top_k": 10,
+      "generated_text": "public class UserService {\n@Useserory           pusporntrerore()\n           @Enamatronsing  tethide id us til = setousetrRerns"
+    },
+    {
+      "config_name": "Greedy",
+      "prompt": "SELECT * FROM users",
+      "greedy": true,
+      "temperature": 1.0,
+      "top_k": null,
+      "generated_text": "SELECT * FROM userserd userd usernatiternaterd usernatitite us us us us us us us us us us rntrnating us us us us us us "
+    },
+    {
+      "config_name": "Temp 0.8 Top-k 10",
+      "prompt": "SELECT * FROM users",
+      "greedy": false,
+      "temperature": 0.8,
+      "top_k": 10,
+      "generated_text": "SELECT * FROM usersernseserdint {\n                  publictiothiouersameamatronstong itised e(usetros\n                p"
+    }
+  ]
+}

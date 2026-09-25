@@ -1,0 +1,141 @@
+{
+  "timestamp": "2026-09-25T12:44:44.855233",
+  "checkpoint": "checkpoints\\phase9_longer\\best.pt",
+  "seed": 42,
+  "max_new_tokens": 80,
+  "results": [
+    {
+      "prompt": "public class UserService {",
+      "evaluations": [
+        {
+          "mode": "Greedy",
+          "greedy": true,
+          "temperature": 1.0,
+          "top_k": null,
+          "output": "public class UserService {\n               return urn username;\n                 returnatete = = = urnate ="
+        },
+        {
+          "mode": "Top-k 10 (T=0.8)",
+          "greedy": false,
+          "temperature": 0.8,
+          "top_k": 10,
+          "output": "public class UserService {\n   prin   serer rReppossporonser(Stringetrice);\n        patubon vernate;\n      "
+        }
+      ]
+    },
+    {
+      "prompt": "@RestController",
+      "evaluations": [
+        {
+          "mode": "Greedy",
+          "greedy": true,
+          "temperature": 1.0,
+          "top_k": null,
+          "output": "@RestController itory username;\n                   returnatusername;\n                 returnate"
+        },
+        {
+          "mode": "Top-k 10 (T=0.8)",
+          "greedy": false,
+          "temperature": 0.8,
+          "top_k": 10,
+          "output": "@RestController ce ctin cas ce);\n      }\n\n\n\npublic    public Ponssssthronaty unturve() {\n      "
+        }
+      ]
+    },
+    {
+      "prompt": "public ResponseEntity",
+      "evaluations": [
+        {
+          "mode": "Greedy",
+          "greedy": true,
+          "temperature": 1.0,
+          "top_k": null,
+          "output": "public ResponseEntity = us username;\n                   returnaturn = urnate = urnate = urndeate = ur"
+        },
+        {
+          "mode": "Top-k 10 (T=0.8)",
+          "greedy": false,
+          "temperature": 0.8,
+          "top_k": 10,
+          "output": "public ResponseEntity atuprn in er.storornty.sererRepepos ublicasereDtis.gease(it) {\n        }\n\n publ"
+        }
+      ]
+    },
+    {
+      "prompt": "SELECT * FROM users",
+      "evaluations": [
+        {
+          "mode": "Greedy",
+          "greedy": true,
+          "temperature": 1.0,
+          "top_k": null,
+          "output": "SELECT * FROM userser user username = userntr = = username;\n                 usernturnate = = = use"
+        },
+        {
+          "mode": "Top-k 10 (T=0.8)",
+          "greedy": false,
+          "temperature": 0.8,
+          "top_k": 10,
+          "output": "SELECT * FROM usersporocer {\n     }\n  public Perontectass atatiord;\n        patublind vid\n     publ"
+        }
+      ]
+    },
+    {
+      "prompt": "Spring Boot application",
+      "evaluations": [
+        {
+          "mode": "Greedy",
+          "greedy": true,
+          "temperature": 1.0,
+          "top_k": null,
+          "output": "Spring Boot applicationdas as aterer te te tre trordedes torordernate er er edestrer er er eater eatede"
+        },
+        {
+          "mode": "Top-k 10 (T=0.8)",
+          "greedy": false,
+          "temperature": 0.8,
+          "top_k": 10,
+          "output": "Spring Boot applicationacanctin c s as atornthas terandectas antand cton s.serronate unter.vid(re ang t"
+        }
+      ]
+    },
+    {
+      "prompt": "interface UserRepository",
+      "evaluations": [
+        {
+          "mode": "Greedy",
+          "greedy": true,
+          "temperature": 1.0,
+          "top_k": null,
+          "output": "interface UserRepository userntry usernderRepospository.serReposeEntory = = = userntorderReposeseEntory "
+        },
+        {
+          "mode": "Top-k 10 (T=0.8)",
+          "greedy": false,
+          "temperature": 0.8,
+          "top_k": 10,
+          "output": "interface UserRepository usepr) {\n     }\n    publicerReposes = titarory.serRepesponseDty, ubtodtred);\n  "
+        }
+      ]
+    },
+    {
+      "prompt": "What is dependency injection?",
+      "evaluations": [
+        {
+          "mode": "Greedy",
+          "greedy": true,
+          "temperature": 1.0,
+          "top_k": null,
+          "output": "What is dependency injection?\n/////      Sen Spricencenction atin ate ate ern e urn username e usernte urn {\n"
+        },
+        {
+          "mode": "Top-k 10 (T=0.8)",
+          "greedy": false,
+          "temperature": 0.8,
+          "top_k": 10,
+          "output": "What is dependency injection?\n\n ByIn Strivis\n/  pterion Pronteces anatiorderon foulern(id) {\n        }\n\n publ"
+        }
+      ]
+    }
+  ]
+}

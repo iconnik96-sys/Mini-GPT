@@ -1,0 +1,190 @@
+{
+  "timestamp": "2026-09-25T12:44:44.856750",
+  "phase": "Phase 9 \u2014 Domain Customization (Java, Spring Boot, REST APIs, OOP, SQL)",
+  "dataset_statistics": {
+    "total_characters": 20257,
+    "total_lines": 647,
+    "num_sections": 11,
+    "section_titles": [
+      "// Section 1: Java Core and Object-Oriented Programming (OOP) Concepts",
+      "// Section 2: Spring Boot Architecture and Dependency Injection",
+      "// Section 3: Spring Data JPA Repositories and Data Access",
+      "// Section 4: Backend Service Layer and Business Logic",
+      "// Section 5: RESTful Web API Controller Layer",
+      "// Section 6: Data Transfer Objects (DTOs) and Validation",
+      "// Section 7: Exception Handling and Error Responses",
+      "// Section 8: Relational Database Schema and SQL Queries",
+      "// Section 9: Programming Concepts and Backend Architecture Definitions",
+      "// Section 10: Spring Boot Testing and MockMvc Integration",
+      "// Section 11: Database Transactions and ACID Guarantees"
+    ],
+    "vocab_size": 88,
+    "vocabulary": "\n !\"$&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWYZ[]_abcdefghijklmnopqrstuvwxyz{}",
+    "train_split": 0.9,
+    "train_tokens": 18231,
+    "val_tokens": 2026,
+    "top_characters": [
+      {
+        "char": "' '",
+        "count": 3704,
+        "percentage": 18.29
+      },
+      {
+        "char": "e",
+        "count": 1627,
+        "percentage": 8.03
+      },
+      {
+        "char": "t",
+        "count": 1098,
+        "percentage": 5.42
+      },
+      {
+        "char": "r",
+        "count": 1057,
+        "percentage": 5.22
+      },
+      {
+        "char": "s",
+        "count": 987,
+        "percentage": 4.87
+      },
+      {
+        "char": "i",
+        "count": 890,
+        "percentage": 4.39
+      },
+      {
+        "char": "o",
+        "count": 785,
+        "percentage": 3.88
+      },
+      {
+        "char": "n",
+        "count": 780,
+        "percentage": 3.85
+      },
+      {
+        "char": "a",
+        "count": 750,
+        "percentage": 3.7
+      },
+      {
+        "char": "'\\n'",
+        "count": 647,
+        "percentage": 3.19
+      },
+      {
+        "char": "u",
+        "count": 507,
+        "percentage": 2.5
+      },
+      {
+        "char": "c",
+        "count": 464,
+        "percentage": 2.29
+      },
+      {
+        "char": "d",
+        "count": 449,
+        "percentage": 2.22
+      },
+      {
+        "char": "p",
+        "count": 446,
+        "percentage": 2.2
+      },
+      {
+        "char": "l",
+        "count": 446,
+        "percentage": 2.2
+      }
+    ],
+    "source": "Educational Open-Source Reference Architecture & Backend Guides",
+    "license": "CC0 1.0 Universal / Public Domain (Educational Use)"
+  },
+  "phase9_experiments": [
+    {
+      "id": "phase9_baseline",
+      "name": "Phase 9 Baseline (150 iters, L=2, D=64)",
+      "parameters": 114944,
+      "iterations": 150,
+      "train_loss": 2.3764123201370237,
+      "val_loss": 2.7571766853332518,
+      "best_val_loss": 2.7571766853332518,
+      "val_perplexity": 15.7553,
+      "best_val_perplexity": 15.7553,
+      "duration_sec": 7.32,
+      "tokens_per_sec": 20970.4
+    },
+    {
+      "id": "phase9_longer",
+      "name": "Phase 9 Longer Training (450 iters, L=2, D=64)",
+      "parameters": 114944,
+      "iterations": 450,
+      "train_loss": 1.7552365779876709,
+      "val_loss": 2.654914379119873,
+      "best_val_loss": 2.5680307865142824,
+      "val_perplexity": 14.2238,
+      "best_val_perplexity": 13.0401,
+      "duration_sec": 24.06,
+      "tokens_per_sec": 19154.6
+    },
+    {
+      "id": "phase9_hyperparam",
+      "name": "Phase 9 Scaled Model (150 iters, L=4, D=128)",
+      "parameters": 822016,
+      "iterations": 150,
+      "train_loss": 2.17458233833313,
+      "val_loss": 2.701676940917969,
+      "best_val_loss": 2.701676940917969,
+      "val_perplexity": 14.9047,
+      "best_val_perplexity": 14.9047,
+      "duration_sec": 24.84,
+      "tokens_per_sec": 6182.6
+    }
+  ],
+  "comparison_with_phase8": [
+    {
+      "id": "exp1_baseline",
+      "name": "Baseline (150 iters, L=2, D=64)",
+      "parameters": 110336,
+      "iterations": 150,
+      "train_loss": 2.2380213260650637,
+      "val_loss": 2.6535389184951783,
+      "best_val_loss": 2.6535389184951783,
+      "val_perplexity": 14.2042,
+      "best_val_perplexity": 14.2042,
+      "duration_sec": 8.37,
+      "tokens_per_sec": 18349.4
+    },
+    {
+      "id": "exp2_longer_training",
+      "name": "Longer Training (500 iters, L=2, D=64)",
+      "parameters": 110336,
+      "iterations": 500,
+      "train_loss": 1.6894237875938416,
+      "val_loss": 2.7392755270004274,
+      "best_val_loss": 2.6363635301589965,
+      "val_perplexity": 15.4758,
+      "best_val_perplexity": 13.9623,
+      "duration_sec": 25.96,
+      "tokens_per_sec": 19725.2
+    },
+    {
+      "id": "exp3_model_size",
+      "name": "Larger Model (150 iters, L=4, D=128)",
+      "parameters": 812800,
+      "iterations": 150,
+      "train_loss": 2.0747915863990785,
+      "val_loss": 2.616016697883606,
+      "best_val_loss": 2.616016697883606,
+      "val_perplexity": 13.6811,
+      "best_val_perplexity": 13.6811,
+      "duration_sec": 28.06,
+      "tokens_per_sec": 5473.9
+    }
+  ],
+  "best_checkpoint": "checkpoints\\phase9_longer\\best.pt",
+  "prompt_evaluations_file": "experiments/phase9_prompts.json"
+}

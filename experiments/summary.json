@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-09-25T12:24:54.846978",
+  "experiments": [
+    {
+      "id": "exp1_baseline",
+      "name": "Baseline (150 iters, L=2, D=64)",
+      "parameters": 110336,
+      "iterations": 150,
+      "train_loss": 2.2380213260650637,
+      "val_loss": 2.6535389184951783,
+      "best_val_loss": 2.6535389184951783,
+      "val_perplexity": 14.2042,
+      "best_val_perplexity": 14.2042,
+      "duration_sec": 8.37,
+      "tokens_per_sec": 18349.4
+    },
+    {
+      "id": "exp2_longer_training",
+      "name": "Longer Training (500 iters, L=2, D=64)",
+      "parameters": 110336,
+      "iterations": 500,
+      "train_loss": 1.6894237875938416,
+      "val_loss": 2.7392755270004274,
+      "best_val_loss": 2.6363635301589965,
+      "val_perplexity": 15.4758,
+      "best_val_perplexity": 13.9623,
+      "duration_sec": 25.96,
+      "tokens_per_sec": 19725.2
+    },
+    {
+      "id": "exp3_model_size",
+      "name": "Larger Model (150 iters, L=4, D=128)",
+      "parameters": 812800,
+      "iterations": 150,
+      "train_loss": 2.0747915863990785,
+      "val_loss": 2.616016697883606,
+      "best_val_loss": 2.616016697883606,
+      "val_perplexity": 13.6811,
+      "best_val_perplexity": 13.6811,
+      "duration_sec": 28.06,
+      "tokens_per_sec": 5473.9
+    }
+  ],
+  "sampling_evaluated_on": "checkpoints\\exp2_longer_training\\best.pt"
+}
