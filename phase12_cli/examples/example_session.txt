@@ -1,0 +1,142 @@
+======================================================================
+ MiniGPT Local CLI - Verified Example Terminal Session
+======================================================================
+
+1. LISTING MODELS
+-----------------
+> python phase12_cli/cli.py models
+
+======================================================================
+                  MiniGPT Local Terminal Assistant                    
+======================================================================
+
+Available Models in Registry:
+
+Model ID               | Architecture             | Parameters | Tokenizer
+------------------------------------------------------------------------
+distilgpt2-lora        | DistilGPT-2 + LoRA (Phas | 82,060,032 | bpe      
+minigpt-programming    | MiniGPT Programming (Pha | 114,944    | character
+distilgpt2             | DistilGPT-2 Base (Pretra | 81,912,576 | bpe      
+minigpt-baseline       | MiniGPT Baseline (Phase  | 110,336    | character
+------------------------------------------------------------------------
+
+Run 'python phase12_cli/cli.py info <model_id>' for detailed inspection.
+Run 'python phase12_cli/cli.py generate --model <model_id> --prompt "..."' to generate.
+
+
+2. INSPECTING A MODEL
+---------------------
+> python phase12_cli/cli.py info distilgpt2-lora
+
+============================================================
+ Model Information: DistilGPT-2 + LoRA (Phase 10)
+============================================================
+ID:                   distilgpt2-lora
+Type:                 peft_lora
+Architecture:         DistilGPT-2 + LoRA (Phase 10)
+Tokenizer:            BPE
+Context Length:       1024 tokens
+Total Parameters:     82,060,032
+Trainable Parameters: 147,456
+PEFT Efficiency:      147,456 trainable | 99.82% frozen
+Frozen Parameters:    81,912,576
+Trainable Ratio:      0.1797%
+Checkpoint Path:      phase10_lora/checkpoints/distilgpt2_lora_programming
+Device:               CPU
+------------------------------------------------------------
+Description:
+  Pretrained DistilGPT-2 fine-tuned with LoRA (r=8, alpha=16) on Java & Spring Boot instructions.
+============================================================
+
+
+3. ONE-SHOT GENERATION (LoRA Model)
+-----------------------------------
+> python phase12_cli/cli.py generate --model distilgpt2-lora --prompt "Explain dependency injection in Spring Boot" --max-new-tokens 60 --temperature 0.8 --top-k 20 --seed 42
+
+Loading 'distilgpt2-lora' on CPU...
+
+============================================================
+Model: DistilGPT-2 + LoRA (Phase 10)
+Prompt: Explain dependency injection in Spring Boot
+------------------------------------------------------------
+Response:
+
+$@SpringBoot is required in Spring Boot, providing a dependency injection policy that enables automatic deployment and integration.<|endoftext|>
+
+------------------------------------------------------------
+
+[Stats] Generated 22 bpe-tokens in 0.795s (27.7 tok/s)
+============================================================
+
+
+4. ONE-SHOT GENERATION (From-Scratch MiniGPT Programming Model)
+---------------------------------------------------------------
+> python phase12_cli/cli.py generate --model minigpt-programming --prompt "Explain inheritance in Java" --max-new-tokens 60 --temperature 0.8 --top-k 20 --seed 42
+
+Loading 'minigpt-programming' on CPU...
+
+============================================================
+Model: MiniGPT Programming (Phase 9)
+Prompt: Explain inheritance in Java
+------------------------------------------------------------
+Response:
+
+p Dtere in e ier r = = coderrngetuse = wiler Serng Stringeat
+------------------------------------------------------------
+
+[Stats] Generated 60 char-tokens in 0.183s (327.7 tok/s)
+============================================================
+
+
+5. INTERACTIVE CHAT SESSION
+---------------------------
+> python phase12_cli/cli.py chat --model minigpt-programming
+
+Initializing chat session with 'minigpt-programming'...
+
+======================================================================
+                  MiniGPT Interactive Local Chat                      
+======================================================================
+Model:  MiniGPT Programming (Phase 9)
+ID:     minigpt-programming
+Device: CPU
+
+Type /help for command list.
+Type /exit or press Ctrl+C to quit.
+======================================================================
+
+You > /help
+
+Supported Commands:
+  /help                     Show this help message
+  /model <model_id>         Switch active model
+  /info                     Inspect current model properties
+  /settings                 Show current generation settings
+  /set <key> <val>          Update setting (e.g. /set temperature 0.5)
+  /clear                    Clear terminal screen
+  /exit                     Exit chat session
+
+You > /settings
+
+------------------------------------
+ Current Generation Settings:
+------------------------------------
+  max_new_tokens : 80
+  temperature    : 0.8
+  top_k          : 20
+  seed           : 42
+  stream         : True
+------------------------------------
+
+You > Explain OOP
+
+minigpt-programming >  cenctind as es orornty aterrnder(St = wilaicaton foule;
+             }
+
+
+  publ 
+[Stats] Generated 80 char-tokens in 0.122s (654.1 tok/s)
+
+You > /exit
+
+Exiting MiniGPT CLI. Goodbye!

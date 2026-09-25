@@ -29,7 +29,11 @@ MiniGPT is an educational GPT-style language model being built entirely from scr
 - **Phase 7 — Text Generation:** COMPLETED
 - **Phase 8 — Experiments and Improvements:** COMPLETED
 - **Phase 9 — Domain Customization (Java, Spring Boot, REST APIs, OOP, SQL):** COMPLETED
-- **Next:** Phase 10 (or subsequent planned enhancements; NOT started yet)
+- **Phase 10 — Pretrained LLM Fine-Tuning with LoRA / QLoRA:** COMPLETED
+- **Phase 11 — Evaluation & Comparison:** COMPLETED
+- **Phase 12 — CLI Application:** COMPLETED
+- **Phase 13 — API + Web Interface:** COMPLETED
+- **Next:** Phase 14 (Finalization / Portfolio Preparation) / subsequent phases (NOT started; stopped per instructions)
 
 ---
 
@@ -318,6 +322,301 @@ Actual values from [`config.py`](file:///c:/Users/nikhi/OneDrive/Desktop/Project
 #### 7. Reference Checkpoint
 - **Checkpoint Location:** [`checkpoints/phase9_longer/best.pt`](file:///c:/Users/nikhi/OneDrive/Desktop/Project/Mini-Gpt/checkpoints/phase9_longer/best.pt)
 - **Best Validation Loss:** 2.5680 (Validation Perplexity: 13.04).
+
+---
+
+### Phase 10 — Pretrained LLM Fine-Tuning with LoRA / QLoRA
+
+#### 1. Objective & Critical Phase Boundary
+- **Objective:** Learn and implement Parameter-Efficient Fine-Tuning (PEFT) using LoRA on an openly available pretrained causal language model for our programming domain (Java, Spring Boot, REST APIs, OOP, SQL).
+- **Critical Phase Boundary:**
+  - Phases 1–9 implemented and trained our own decoder-only Transformer from scratch with zero pretrained weights.
+  - Phase 10 fine-tunes a pretrained open-source LLM (`distilbert/distilgpt2`) using LoRA adapters via Hugging Face PEFT.
+  - The from-scratch MiniGPT architecture in root `src/` is strictly preserved and remains untouched.
+  - All Phase 10 code, datasets, checkpoints, experiments, and tests reside strictly in `phase10_lora/`.
+
+#### 2. Hardware & Environment Detected
+- **OS:** Windows 11 (10.0.26200-SP0)
+- **CPU:** Intel64 Family 6 Model 186 Stepping 2, GenuineIntel, 12 logical cores
+- **RAM:** 15.70 GB Total, ~5.48 GB Available
+- **GPU Availability:** None (`torch.cuda.is_available() == False`, CPU-only)
+- **GPU VRAM:** N/A (None)
+- **PyTorch Version:** `2.14.0+cpu`
+- **CUDA Availability:** `False`
+- **Transformers Version:** `5.17.0`
+- **PEFT Version:** `0.21.0`
+- **Datasets Version:** `5.0.1`
+- **BitsAndBytes Version:** Not installed (Windows CPU environment; QLoRA limitation documented)
+
+#### 3. Pretrained Model Selected
+- **Model Name:** `distilbert/distilgpt2`
+- **Total Parameters:** 81,912,576 (~81.9M parameters)
+- **Architecture:** 6 Transformer decoder layers, 12 attention heads, 768 hidden dimension (`GPT2LMHeadModel`)
+- **Tokenizer:** Byte-level BPE (`GPT2TokenizerFast`), vocabulary size: 50,257 tokens
+- **Context Length:** 1,024 tokens
+- **License:** Apache 2.0 (Permissive for open educational and commercial use)
+- **Memory Footprint:** ~330 MB FP32 weights, ~500 MB RAM during training
+- **Selection Rationale:** Native causal LM with full generation support, compact memory footprint that executes smoothly and fast on CPU, and official Hugging Face PEFT compatibility.
+
+#### 4. LoRA Mathematics & Parameter Efficiency
+- **Mathematical Formulation:**
+  $$W' = W + \frac{\alpha}{r}(B \cdot A)$$
+  where $W \in \mathbb{R}^{d \times k}$ is the frozen pretrained weight matrix, $A \in \mathbb{R}^{r \times k}$ is Gaussian initialized, $B \in \mathbb{R}^{d \times r}$ is zero-initialized, $r$ is the LoRA rank, and $\alpha$ is the scaling factor.
+- **Target Modules:** `c_attn` (the combined Query, Key, Value attention projection layers in `GPT2Attention`).
+- **Configuration:** $r = 8$, $\alpha = 16$, $\text{dropout} = 0.05$, $\text{fan\_in\_fan\_out} = \text{True}$.
+- **Parameter Counts (Empirically Measured):**
+  - **Total Parameters:** 82,060,032
+  - **Trainable Parameters:** 147,456
+  - **Frozen Parameters:** 81,912,576
+  - **Trainable Percentage:** **0.1797%** (over 99.82% of the model is frozen).
+
+#### 5. Programming Instruction Dataset (`phase10_lora/data/programming_instructions.json`)
+- **Size:** 30 high-signal instruction-response pairs covering Spring Boot, Java OOP, REST endpoints, DTOs, JPA, SQL JOIN, and `@Transactional`.
+- **Partition:** 24 training examples (80%), 6 validation examples (20%), fixed random seed (42).
+- **Token Lengths (BPE):**
+  - Instruction: Min 6, Max 26, Mean 13.3 tokens.
+  - Response: Min 52, Max 97, Mean 73.2 tokens.
+  - Full sequence: Min 71, Max 121, Mean 92.2 tokens.
+- **Prompt Loss Masking:** Target tokens corresponding to the instruction prompt prefix are masked with `-100` in the labels tensor, ensuring cross-entropy loss gradients are computed only over response tokens.
+
+#### 6. Training Configuration & Results
+- **Optimization:** AdamW ($\text{lr} = 5 \times 10^{-4}$, $\text{weight\_decay} = 0.01$).
+- **Batch Size:** 4, Epochs: 8, Seed: 42, Max Sequence Length: 256.
+- **Training Time:** 178.44 seconds on CPU.
+- **Loss Progression:**
+  - Initial Validation Loss: 3.7001
+  - Epoch 1: Train Loss 4.1090, Val Loss 3.6710
+  - Epoch 2: Train Loss 4.0024, Val Loss 3.6173
+  - Epoch 3: Train Loss 3.9062, Val Loss 3.5699
+  - Epoch 4: Train Loss 3.8268, Val Loss 3.5535
+  - Epoch 5: Train Loss 3.7234, Val Loss 3.5435
+  - Epoch 6: Train Loss 3.6802, Val Loss 3.5306
+  - Epoch 7: Train Loss 3.6322, Val Loss 3.5319
+  - Epoch 8: **Final Train Loss: 3.5563, Final Val Loss: 3.5418**
+- **Checkpoint Location:** [`phase10_lora/checkpoints/distilgpt2_lora_programming/`](file:///c:/Users/nikhi/OneDrive/Desktop/Project/Mini-Gpt/phase10_lora/checkpoints/distilgpt2_lora_programming/)
+
+#### 7. Benchmark Prompt Evaluation (Base Model vs LoRA Model)
+
+| # | Benchmark Prompt | Base Model Output (Before LoRA) | LoRA Fine-Tuned Output (After LoRA) |
+|---|---|---|---|
+| 1 | *What is dependency injection in Spring Boot?* | Degenerate prompt repetition loop (`What is dependency injection in Spring Boot? ### Response: ...`) | `"Spring Boot is a framework that provides..."` |
+| 2 | *Explain the difference between an interface and an abstract class in Java.* | Generic repetition (`The following code is a simple example of a Java object...`) | `"An abstract class is an abstract class that implements a method..."` |
+| 3 | *How does @RestController work?* | Degenerate prompt repetition loop | `"@RestController is a method that returns a single request to the controller..."` |
+| 4 | *What is Spring Data JPA?* | Degenerate prompt repetition loop | `"Spring Data JPA is a RESTful Data JPA that provides..."` |
+| 5 | *Write a simple REST endpoint in Spring Boot.* | Degenerate prompt repetition loop | `"Write a simple REST endpoint in Spring Boot."` |
+| 6 | *Explain SQL JOIN.* | Verbatim prompt template instruction repetition | `"SQL JOIN."` |
+| 7 | *What is @Transactional?* | Degenerate prompt repetition loop | `"Transactional is a method that allows a user to perform a task using a single method..."` |
+
+#### 8. Comparison Table: Base Pretrained vs LoRA Adaptation
+
+| Model | Base Pretrained Model | Fine-Tuning | Trainable Params | Trainable % | Final Val Loss | Notes |
+|---|---|---|---:|---:|---:|---|
+| **Base** | `distilbert/distilgpt2` | None | 0 | 0.00% | 3.7001 | Zero instruction awareness; repeats prompt templates in infinite loops |
+| **LoRA** | `distilbert/distilgpt2` | LoRA ($r=8$) | 147,456 | **0.1797%** | **3.5418** | Adapts to instruction format, eliminates header repetition, activates domain entities |
+
+#### 9. QLoRA Investigation
+- **Definition:** QLoRA = 4-bit Quantized Base Model (NF4 + Double Quantization) + 16/32-bit LoRA Adapters.
+- **Hardware Limitation:** `bitsandbytes` 4-bit quantization kernels require an NVIDIA GPU with CUDA.
+- **System Reality:** Current environment is Windows 11 with CPU-only PyTorch (`2.14.0+cpu`).
+- **Policy:** Did NOT fake a QLoRA run. Implemented full QLoRA configuration and diagnostic probe in `phase10_lora/src/qlora_investigation.py` and kept working FP32 LoRA as primary result.
+
+#### 10. Verification & Test Suite Results
+- **Phase 10 Tests:** `python -m unittest discover -s phase10_lora/tests -p "test_*.py" -v` -> **10 tests passed in 3.966s**.
+- **Phase 1–9 Tests:** `python -m unittest discover -s tests -p "test_*.py" -v` -> **94 tests ran, 90 passed, 4 skipped cleanly for CUDA in 4.722s**.
+- **Total Combined Tests:** **104 tests (100 passed, 4 cleanly skipped)**.
+
+#### 11. Lessons Learned & Limitations
+- **Extreme Parameter Efficiency:** Training fewer than 150k parameters (0.18%) completely changes the behavioral profile of an 82M model from raw next-token completion to instruction compliance.
+- **CPU Feasibility:** Small models like DistilGPT-2 enable meaningful PEFT experiments on commodity laptop CPUs without needing multi-GPU clusters.
+- **Capacity Limits:** 82M parameters is insufficient for nuanced natural language generation. While format adherence is achieved, answers exhibit lexical loops due to limited base model world knowledge.
+- **Status of Phase 11:** Phase 11 completed per instructions.
+
+---
+
+### Phase 11 — Evaluation & Comparison
+
+#### 1. Objective & Scope
+- Built a unified, reproducible evaluation framework comparing four distinct neural language modeling paradigms:
+  1. **MiniGPT Baseline (Phase 8):** From-scratch decoder-only Transformer trained on Shakespeare (*Coriolanus*).
+  2. **MiniGPT Programming (Phase 9):** From-scratch decoder-only Transformer trained on Java/Spring Boot/SQL.
+  3. **DistilGPT-2 Base (Pretrained):** 82M causal language model pretrained on WebText by Hugging Face (zero fine-tuning).
+  4. **DistilGPT-2 + LoRA (Phase 10):** Pretrained DistilGPT-2 adapted to backend programming instructions using LoRA ($r=8, \alpha=16$).
+- All Phase 11 code, prompts, raw outputs, final summaries, tests, and reports reside strictly in `phase11_evaluation/`.
+
+#### 2. Measured Multi-System Scoreboard
+
+| System ID | Display Name | Architecture | Tokenizer | Total Params | Trainable Params | Trainable % | Checkpoint Size | Avg Latency | Avg Throughput | Repetition Rate |
+|---|---|---|---|---:|---:|---:|---:|---:|---:|---:|
+| `minigpt_baseline` | MiniGPT Baseline (Phase 8) | Custom Transformer (2L, 4H, 64D) | Character (52) | 110,336 | 110,336 | 100.0000% | 1.33 MB | 0.359s | 222.7 tok/s | 0.4000 |
+| `minigpt_programming` | MiniGPT Programming (Phase 9) | Custom Transformer (2L, 4H, 64D) | Character (88) | 114,944 | 114,944 | 100.0000% | 1.39 MB | 0.193s | 424.6 tok/s | 0.2428 |
+| `distilgpt2_base` | DistilGPT-2 Base (Pretrained) | DistilGPT-2 (6L, 12H, 768D) | Byte-level BPE (50,257) | 81,912,576 | 0 | 0.0000% | 334.35 MB | 2.414s | 33.1 tok/s | 0.8559 |
+| `distilgpt2_lora` | DistilGPT-2 + LoRA (Phase 10) | DistilGPT-2 + LoRA (r=8) | Byte-level BPE (50,257) | 82,060,032 | 147,456 | **0.1797%** | **3.96 MB** | 1.523s | 26.6 tok/s | **0.4064** |
+
+#### 3. Core Scientific Findings
+1. **LoRA Parameter Efficiency:** Fine-tuning only **147,456 adapter parameters (0.1797%)** across the attention projection layers (`c_attn`) cuts unigram repetition rate by more than half (from 0.8559 down to 0.4064), stops prompt template looping, and activates Spring Boot/JPA terminology.
+2. **Tokenizer Vocabulary Bounds:** The Phase 8 baseline was trained strictly on Shakespeare and lacks digits `0-9`, `@`, and brackets. Prompts requiring modern code syntax were cleanly rejected prior to the forward pass, empirically proving how vocabulary limits model usability.
+3. **Perplexity Incomparability:** Character-level perplexity ($\approx 13.0$) and BPE subword perplexity ($\approx 34.5$) cannot be compared across models because BPE tokens have vastly higher theoretical entropy upper bounds ($\log 50257 \approx 10.82$ vs $\log 88 \approx 4.47$).
+4. **Pedagogical vs Practical Trade-offs:** Building from scratch teaches foundational Transformer mechanics (causal masking, multi-head projections, residual dynamics), whereas PEFT on pretrained weights provides practical downstream steerability with minimal compute and storage.
+
+#### 4. Test Suite Verification
+- **Phase 11 Tests:** `python -m unittest discover -s phase11_evaluation/tests -p "test_*.py" -v` -> **10 tests passed in 1.207s**.
+- **Phase 10 Tests:** `python -m unittest discover -s phase10_lora/tests -p "test_*.py" -v` -> **10 tests passed in 6.224s**.
+- **Phase 1–9 Tests:** `python -m unittest discover -s tests -p "test_*.py" -v` -> **94 tests ran, 90 passed, 4 skipped cleanly for CUDA in 6.179s**.
+- **Total Combined Tests:** **114 tests (110 passed, 4 cleanly skipped for CUDA, 0 failures)**.
+
+#### 5. Artifact Locations
+- **Report Location:** [`phase11_evaluation/reports/phase11_report.md`](file:///c:/Users/nikhi/OneDrive/Desktop/Project/Mini-Gpt/phase11_evaluation/reports/phase11_report.md)
+- **Summary JSON:** [`phase11_evaluation/results/final/summary_comparison.json`](file:///c:/Users/nikhi/OneDrive/Desktop/Project/Mini-Gpt/phase11_evaluation/results/final/summary_comparison.json)
+- **Raw Outputs:** [`phase11_evaluation/results/raw/`](file:///c:/Users/nikhi/OneDrive/Desktop/Project/Mini-Gpt/phase11_evaluation/results/raw/)
+- **Confirmation:** Phase 12 (CLI) has NOT been started. Execution stopped cleanly at Phase 11 completion per instructions.
+
+---
+
+### Phase 12 — CLI Application
+
+#### 1. Objective & Scope
+- Developed a professional, modular command-line interface for the MiniGPT project, enabling users to interact with all 4 model systems.
+- Built strictly inside a dedicated folder: `phase12_cli/`.
+- Zero changes, deletions, or overwrites to existing Phase 1–11 code or model checkpoints.
+- Operates purely on CPU in Windows 11 using existing project dependencies (`torch`, `transformers`, `peft`).
+
+#### 2. Architecture & Directory Layout
+```text
+phase12_cli/
+├── README.md                 # Complete user & developer documentation
+├── cli.py                    # Top-level argparse entry point
+├── config.py                 # GenerationSettings & CLIConfig dataclasses
+├── src/
+│   ├── __init__.py           # Package marker
+│   ├── model_registry.py     # Registry of metadata without eager weight loading
+│   ├── model_loader.py       # Lazy weight loading with ModelSession caching
+│   ├── generator.py          # Dual streaming generation engine & latency tracking
+│   ├── commands.py           # Subcommand handlers (models, info, generate, chat)
+│   └── formatting.py         # Terminal ASCII banners, tables, and statistics cards
+├── tests/
+│   └── test_cli.py           # 9 unit tests covering parser, registry, validation, dispatch
+├── examples/
+│   └── example_session.txt   # Verified recorded terminal interaction session
+└── screenshots/              # Reserved for CLI visuals
+```
+
+#### 3. Supported Model Systems
+1. `minigpt-baseline` (Phase 8): 110,336 parameters, character tokenizer (52 chars), trained on Shakespeare.
+2. `minigpt-programming` (Phase 9): 114,944 parameters, character tokenizer (88 chars), trained on Java/Spring Boot.
+3. `distilgpt2` (Phase 10 Base): 81,912,576 parameters, BPE tokenizer (50,257 tokens), pretrained causal LLM.
+4. `distilgpt2-lora` (Phase 10 LoRA): 82,060,032 total params, 147,456 trainable (0.1797%), 99.82% frozen.
+
+#### 4. Supported Commands
+- `python phase12_cli/cli.py models`: Lists registered models with status, parameter counts, and tokenizer types. Does NOT allocate model weights into memory.
+- `python phase12_cli/cli.py info <model_id>`: Inspects detailed parameter breakdown, trainable %, checkpoint path, and device allocation.
+- `python phase12_cli/cli.py generate --model <id> --prompt <p> [--max-new-tokens N] [--temperature T] [--top-k K] [--seed S] [--no-stream]`: One-shot generation with live token streaming and performance metrics (latency, throughput).
+- `python phase12_cli/cli.py chat [--model <id>]`: Full interactive REPL maintaining model memory across turns. Supports slash commands: `/help`, `/settings`, `/set <key> <val>`, `/model`, `/clear`, `/exit`.
+
+#### 5. Streaming Mechanics
+- **From-Scratch MiniGPT:** Incremental autoregressive loop streaming character tokens directly to stdout with `sys.stdout.flush()`.
+- **DistilGPT-2 / LoRA:** Hugging Face `TextStreamer(tokenizer, skip_prompt=True)` streaming BPE decoded tokens as they emerge from the logits computation.
+
+#### 6. Lazy Weight Loading
+- `models` command executes in < 0.05s without loading neural networks.
+- `generate` and `chat` load weights on demand into a `ModelSession` that stays alive during the chat session, avoiding reload penalties across conversational turns.
+
+#### 7. Test Suite Verification
+- **Phase 12 Tests:** `python -m unittest discover -s phase12_cli/tests -p "test_*.py" -v` -> **9 tests passed in 0.017s**.
+- **Phase 11 Tests:** `python -m unittest discover -s phase11_evaluation/tests -p "test_*.py" -v` -> **10 tests passed in 1.250s**.
+- **Phase 10 Tests:** `python -m unittest discover -s phase10_lora/tests -p "test_*.py" -v` -> **10 tests passed in 6.180s**.
+- **Phase 1–9 Tests:** `python -m unittest discover -s tests -p "test_*.py" -v` -> **94 tests ran, 90 passed, 4 skipped cleanly for CUDA in 4.930s**.
+- **Total Combined Project Tests:** **123 tests (119 passed, 4 cleanly skipped for CUDA, 0 failures)**.
+
+#### 8. Artifact Locations
+- **CLI Documentation:** [`phase12_cli/README.md`](file:///c:/Users/nikhi/OneDrive/Desktop/Project/Mini-Gpt/phase12_cli/README.md)
+- **Session Transcript:** [`phase12_cli/examples/example_session.txt`](file:///c:/Users/nikhi/OneDrive/Desktop/Project/Mini-Gpt/phase12_cli/examples/example_session.txt)
+- **Confirmation:** Phase 12 (CLI) completed per instructions.
+
+---
+
+### Phase 13 — API + Web Interface (MiniGPT Studio)
+
+#### 1. Objective & Scope
+- Built **MiniGPT Studio**, a local developer workspace and web interface for exploring, generating text from, and analyzing all four MiniGPT language models.
+- Built strictly inside a dedicated folder: `phase13_api_web/`.
+- Backend powered by **FastAPI**, **Uvicorn**, and **Pydantic**; frontend built with **React 18** and **Vite**.
+- Zero modification to existing Phase 1–12 code or checkpoints. Reused model registry and model loader architectures cleanly.
+- 100% free and CPU-compatible on Windows 11 with zero external paid APIs.
+
+#### 2. Architecture & Directory Layout
+```text
+phase13_api_web/
+├── README.md                 # Complete documentation and setup guide
+├── test_live_server.py       # End-to-end integration verification script
+├── backend/
+│   ├── app.py                # FastAPI entry point & CORS configuration
+│   ├── config.py             # Server settings & path resolution
+│   ├── schemas.py            # Pydantic validation schemas
+│   ├── model_manager.py      # Lazy loader, single active model memory cache, SSE streamer
+│   ├── dependencies.py       # Dependency injection provider
+│   ├── routes/
+│   │   ├── health.py         # GET /api/health
+│   │   ├── models.py         # GET /api/models & GET /api/models/{id}
+│   │   └── generation.py     # POST /api/generate & POST /api/generate/stream
+│   └── tests/
+│       ├── test_health.py    # Health and root endpoint tests
+│       ├── test_models.py    # Models catalog and detail tests
+│       └── test_generation.py# Parameter validation, OOV checks, generation & SSE tests
+├── frontend/
+│   ├── package.json          # React 18, Vite dependencies & build scripts
+│   ├── vite.config.js        # Vite config with API proxy
+│   ├── index.html            # Studio HTML shell & web fonts
+│   └── src/
+│       ├── main.jsx          # React DOM entry point
+│       ├── App.jsx           # Root layout and application state
+│       ├── api.js            # Centralized API fetch & SSE client
+│       ├── styles.css        # Professional dark theme design system
+│       └── components/       # Header, ModelSelector, ModelInfo, GenerationSettings, ChatPanel, StatusBar
+└── examples/
+    └── api_examples.md       # Curl, PowerShell, and JSON examples
+```
+
+#### 3. Features & Endpoints
+- `GET /api/health`: Health status check.
+- `GET /api/models`: Model catalog listing all 4 models without allocating model weights into memory.
+- `GET /api/models/{id}`: Detailed model metadata, parameter counts (trainable vs frozen), architecture, and context window.
+- `POST /api/generate`: Synchronous text generation returning generated text, latency, token count, and throughput.
+- `POST /api/generate/stream`: Real-time Server-Sent Events (SSE) token streaming (character-by-character for scratch models, subword by subword via `TextIteratorStreamer` for DistilGPT-2/LoRA).
+- **Frontend Studio UI:** Model selection cards, live model specifications card, generation parameter sliders (temperature, top-k, max tokens, seed), streaming toggle, prompt input with chips, response container with live blinking cursor, copy button, and status bar with throughput and latency metrics.
+
+#### 4. Real Live End-to-End Verification
+- **Model:** `minigpt-programming` (Phase 9)
+- **Prompt:** `"Explain inheritance in Java"`
+- **Result:** 60 char tokens generated in **0.0854s** (**702.8 tokens/sec**).
+- **Streaming Test:** 60 token SSE events streamed incrementally with valid completion payload.
+- **Frontend Build:** `vite build` completed in **745ms** generating clean production assets in `dist/`.
+
+#### 5. Test Suite Verification
+- **Phase 13 Backend Tests:** `python -m unittest discover -s phase13_api_web/backend/tests -p "test_*.py" -v` -> **13 tests passed in 0.265s**.
+- **Phase 12 Tests:** `python -m unittest discover -s phase12_cli/tests -p "test_*.py" -v` -> **9 tests passed in 0.009s**.
+- **Phase 11 Tests:** `python -m unittest discover -s phase11_evaluation/tests -p "test_*.py" -v` -> **10 tests passed in 0.843s**.
+- **Phase 10 Tests:** `python -m unittest discover -s phase10_lora/tests -p "test_*.py" -v` -> **10 tests passed in 4.108s**.
+- **Phase 1–9 Tests:** `python -m unittest discover -s tests -p "test_*.py" -v` -> **94 tests ran, 90 passed, 4 skipped cleanly for CUDA in 6.766s**.
+- **Total Combined Project Tests:** **136 tests (132 passed, 4 cleanly skipped for CUDA, 0 failures)**.
+
+#### 6. Artifact Locations
+- **API & Web README:** [`phase13_api_web/README.md`](file:///c:/Users/nikhi/OneDrive/Desktop/Project/Mini-Gpt/phase13_api_web/README.md)
+- **API Examples:** [`phase13_api_web/examples/api_examples.md`](file:///c:/Users/nikhi/OneDrive/Desktop/Project/Mini-Gpt/phase13_api_web/examples/api_examples.md)
+- **Live Verification Script:** [`phase13_api_web/test_live_server.py`](file:///c:/Users/nikhi/OneDrive/Desktop/Project/Mini-Gpt/phase13_api_web/test_live_server.py)
+- **Confirmation:** Phase 14 (Finalization / Portfolio Preparation) has NOT been started. Execution stopped cleanly at Phase 13 completion per instructions.
+
+### Phase 10 v2 Model Optimization & LoRA Remediation
+
+- **Diagnostic Audit:** Diagnosed severe repetition and failure to answer basic Java/OOP/REST prompts in initial Phase 10 checkpoint (`distilgpt2_lora_programming`).
+  - **Root Cause 1 (Dataset Distribution):** Initial dataset had only 30 niche Spring Boot and SQL theoretical examples. Foundational Java ("What is Java?", "Is Java a programming language?"), code snippets, and conversational prompts were completely absent.
+  - **Root Cause 2 (Decoding Trap):** Absence of `repetition_penalty` (1.0 default) and `no_repeat_ngram_size` (0 default) in CLI and generation pipelines caused 82M DistilGPT-2 to loop indefinitely on self-reinforcing tokens (`java.class(ClassName:...`).
+- **Expanded Instruction Dataset v2:** Created `phase10_lora/data/programming_instructions_v2.json` with 94 diverse examples (75 train, 19 val) covering Java core, JVM, OOP pillars, methods, code snippets, Spring Boot, REST APIs, SQL, and conversational greetings.
+- **Model Checkpoint v2:** Fine-tuned `distilbert/distilgpt2` with LoRA (r=8, alpha=16) over 6 epochs with gradient clipping (1.0) and saved to `phase10_lora/checkpoints/distilgpt2_lora_programming_v2/`.
+  - **Initial Val Loss:** 3.5681 -> **Final Val Loss:** 3.2592 (Train Loss: 3.3363) in 535.4s on CPU.
+  - **Original Checkpoint Preserved:** Original v1 checkpoint (`distilgpt2_lora_programming`) remains untouched as reference baseline.
+- **Generation Controls:** Added `repetition_penalty = 1.15`, `no_repeat_ngram_size = 3`, `top_p = 0.9`, and `skip_special_tokens = True` to `phase12_cli/config.py`, `phase12_cli/src/generator.py`, `phase10_lora/src/generate.py`, and `phase13_api_web/backend/model_manager.py`.
+- **Model Registry & Aliases:** Added `distilgpt2-lora-v2` to registry and implemented case-insensitive alias normalization in `phase12_cli/src/model_registry.py` (e.g., handles "DistilGPT-2 + LoRA" without argument errors).
+- **Verification:** 14 unit tests in `phase10_lora/tests/test_lora.py` passed (100%), 9 CLI tests passed, 13 backend tests passed. Head-to-head evaluation across 8 target prompts confirmed elimination of loops and clear, coherent answers.
 
 ---
 

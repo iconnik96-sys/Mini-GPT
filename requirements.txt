@@ -1,14 +1,26 @@
-# MiniGPT - Core Dependencies
-# Phase 1: Educational GPT-style Transformer implementation from scratch
+# ==============================================================================
+# MiniGPT Project — Python Dependencies
+# ==============================================================================
+# Compatible with Windows 10/11, macOS, and Linux (Python 3.10 - 3.12)
+# CPU-friendly: Defaults to CPU PyTorch builds to prevent multi-GB CUDA downloads.
+# ==============================================================================
 
-# Deep Learning framework
-torch>=2.0.0
+--extra-index-url https://download.pytorch.org/whl/cpu
 
-# Scientific computing and array operations
-numpy>=1.24.0
+# Core Deep Learning & Modeling
+torch>=2.2.0
+numpy>=1.26.0
+transformers>=4.40.0
+peft>=0.10.0
+accelerate>=0.28.0
 
-# Progress bar utility for training loops and downloads
-tqdm>=4.65.0
+# API Backend (Phase 13)
+fastapi>=0.110.0
+uvicorn>=0.28.0
+pydantic>=2.6.0
+httpx>=0.27.0
 
-# HTTP library for fetching sample datasets (e.g. TinyShakespeare)
+# Testing & Client Utilities
+pytest>=8.0.0
 requests>=2.31.0
+tqdm>=4.66.0

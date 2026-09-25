@@ -1,0 +1,73 @@
+{
+  "config": {
+    "model_name": "distilbert/distilgpt2",
+    "device": "cpu",
+    "r": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.05,
+    "target_modules": [
+      "c_attn"
+    ],
+    "fan_in_fan_out": true,
+    "bias": "none",
+    "dataset_path": "phase10_lora\\data\\programming_instructions_v2.json",
+    "train_val_split": 0.8,
+    "seed": 42,
+    "max_seq_len": 256,
+    "batch_size": 4,
+    "learning_rate": 0.0003,
+    "num_train_epochs": 6,
+    "weight_decay": 0.01,
+    "checkpoint_dir": "phase10_lora\\checkpoints",
+    "experiment_dir": "phase10_lora\\experiments",
+    "adapter_checkpoint_name": "distilgpt2_lora_programming_v2"
+  },
+  "parameter_stats": {
+    "total_parameters": 82060032,
+    "trainable_parameters": 147456,
+    "frozen_parameters": 81912576,
+    "trainable_percentage": 0.1797
+  },
+  "dataset_stats": {
+    "total_examples": 94,
+    "train_examples": 75,
+    "val_examples": 19
+  },
+  "initial_val_loss": 3.5681,
+  "final_train_loss": 3.3363,
+  "final_val_loss": 3.2592,
+  "training_time_seconds": 508.11,
+  "epoch_records": [
+    {
+      "epoch": 1,
+      "train_loss": 3.7087,
+      "val_loss": 3.4813
+    },
+    {
+      "epoch": 2,
+      "train_loss": 3.5509,
+      "val_loss": 3.3707
+    },
+    {
+      "epoch": 3,
+      "train_loss": 3.4658,
+      "val_loss": 3.3325
+    },
+    {
+      "epoch": 4,
+      "train_loss": 3.4253,
+      "val_loss": 3.3
+    },
+    {
+      "epoch": 5,
+      "train_loss": 3.3839,
+      "val_loss": 3.2861
+    },
+    {
+      "epoch": 6,
+      "train_loss": 3.3363,
+      "val_loss": 3.2592
+    }
+  ],
+  "checkpoint_path": "phase10_lora\\checkpoints\\distilgpt2_lora_programming_v2"
+}

@@ -1,0 +1,347 @@
+{
+  "metadata": {
+    "system_id": "distilgpt2_lora",
+    "display_name": "DistilGPT-2 + LoRA (Phase 10)",
+    "category": "peft_lora",
+    "architecture": "DistilGPT2 + Low-Rank Adaptation (LoRA r=8, alpha=16 on c_attn)",
+    "tokenizer_type": "Byte-level BPE (GPT2TokenizerFast)",
+    "vocabulary_size": 50257,
+    "context_length": 1024,
+    "n_layer": 6,
+    "n_head": 12,
+    "n_embd": 768,
+    "total_parameters": 82060032,
+    "trainable_parameters": 147456,
+    "frozen_parameters": 81912576,
+    "trainable_percentage": 0.1797,
+    "checkpoint_size_mb": 3.96,
+    "training_method": "Parameter-Efficient Fine-Tuning (LoRA)",
+    "training_dataset": "Programming Instructions (phase10_lora/data/programming_instructions.json)",
+    "training_steps": 48,
+    "training_time": "178.44s",
+    "hardware": "CPU (Intel 12-core)"
+  },
+  "mode": "deterministic",
+  "generation_config": {
+    "max_new_tokens": 80,
+    "temperature": 0.0,
+    "top_k": null,
+    "device": "cpu"
+  },
+  "aggregates": {
+    "total_prompts": 13,
+    "successful_prompts": 13,
+    "failed_or_oov_prompts": 0,
+    "average_generation_time_sec": 1.5229,
+    "average_tokens_per_sec": 26.62,
+    "average_distinct_1": 0.5936,
+    "average_distinct_2": 0.631,
+    "average_repetition_rate": 0.4064,
+    "average_domain_keywords_found": 1.46
+  },
+  "prompt_results": [
+    {
+      "status": "success",
+      "output": "The four pillars of OOP are:\n1) OOP is a collection of data structures that are immutable and immutable. The data structure is immutable and immutable. The data structure is immutable and immutable. The data structure is immutable and immutable. The data structure is immutable and immutable. The data structure is immutable and immutable. The data structure is immutable and immutable. The data structure is immutable and immutable",
+      "full_output": "The four pillars of OOP are:\n1) OOP is a collection of data structures that are immutable and immutable. The data structure is immutable and immutable. The data structure is immutable and immutable. The data structure is immutable and immutable. The data structure is immutable and immutable. The data structure is immutable and immutable. The data structure is immutable and immutable. The data structure is immutable and immutable",
+      "generated_tokens": 80,
+      "generation_time_sec": 2.6234,
+      "tokens_per_sec": 30.49,
+      "metrics": {
+        "char_length": 432,
+        "word_count": 68,
+        "distinct_1": 0.2353,
+        "distinct_2": 0.3433,
+        "repetition_rate": 0.7647,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p01_oop",
+      "category": "Java OOP",
+      "prompt": "Explain the four pillars of OOP."
+    },
+    {
+      "status": "success",
+      "output": "Explain inheritance in Java.",
+      "full_output": "Explain inheritance in Java.",
+      "generated_tokens": 6,
+      "generation_time_sec": 0.2441,
+      "tokens_per_sec": 24.58,
+      "metrics": {
+        "char_length": 28,
+        "word_count": 4,
+        "distinct_1": 1.0,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 1,
+        "domain_keywords_list": [
+          "inheritance"
+        ],
+        "syntax_score": 0
+      },
+      "prompt_id": "p02_inheritance",
+      "category": "Inheritance",
+      "prompt": "Explain inheritance in Java."
+    },
+    {
+      "status": "success",
+      "output": "An interface is a class that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface",
+      "full_output": "An interface is a class that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface",
+      "generated_tokens": 80,
+      "generation_time_sec": 2.6486,
+      "tokens_per_sec": 30.2,
+      "metrics": {
+        "char_length": 533,
+        "word_count": 80,
+        "distinct_1": 0.0875,
+        "distinct_2": 0.1139,
+        "repetition_rate": 0.9125,
+        "domain_keywords_found": 2,
+        "domain_keywords_list": [
+          "class",
+          "interface"
+        ],
+        "syntax_score": 1
+      },
+      "prompt_id": "p03_interfaces",
+      "category": "Interfaces",
+      "prompt": "What is an interface in Java?"
+    },
+    {
+      "status": "success",
+      "output": "Exception handling in Java.",
+      "full_output": "Exception handling in Java.",
+      "generated_tokens": 5,
+      "generation_time_sec": 0.2049,
+      "tokens_per_sec": 24.4,
+      "metrics": {
+        "char_length": 27,
+        "word_count": 4,
+        "distinct_1": 1.0,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 1,
+        "domain_keywords_list": [
+          "exception"
+        ],
+        "syntax_score": 0
+      },
+      "prompt_id": "p04_exceptions",
+      "category": "Exception Handling",
+      "prompt": "Explain exception handling in Java."
+    },
+    {
+      "status": "success",
+      "output": "Explain List and Map in Java.",
+      "full_output": "Explain List and Map in Java.",
+      "generated_tokens": 8,
+      "generation_time_sec": 0.2757,
+      "tokens_per_sec": 29.02,
+      "metrics": {
+        "char_length": 29,
+        "word_count": 6,
+        "distinct_1": 1.0,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p05_collections",
+      "category": "Collections",
+      "prompt": "Explain List and Map in Java."
+    },
+    {
+      "status": "success",
+      "output": "Spring Boot is a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a",
+      "full_output": "Spring Boot is a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a",
+      "generated_tokens": 80,
+      "generation_time_sec": 2.3927,
+      "tokens_per_sec": 33.43,
+      "metrics": {
+        "char_length": 510,
+        "word_count": 80,
+        "distinct_1": 0.0875,
+        "distinct_2": 0.0886,
+        "repetition_rate": 0.9125,
+        "domain_keywords_found": 2,
+        "domain_keywords_list": [
+          "spring",
+          "boot"
+        ],
+        "syntax_score": 0
+      },
+      "prompt_id": "p06_di",
+      "category": "Dependency Injection",
+      "prompt": "What is dependency injection in Spring Boot?"
+    },
+    {
+      "status": "success",
+      "output": "@RestController is a method that returns a single request to the controller. @RestController is a method that returns a single request to the controller. @RestController is a method that returns a single request to the controller. @RestController is a method that returns a single request to the controller. @RestController is a method that returns a single request to the controller. @RestController is a",
+      "full_output": "@RestController is a method that returns a single request to the controller. @RestController is a method that returns a single request to the controller. @RestController is a method that returns a single request to the controller. @RestController is a method that returns a single request to the controller. @RestController is a method that returns a single request to the controller. @RestController is a",
+      "generated_tokens": 80,
+      "generation_time_sec": 2.4227,
+      "tokens_per_sec": 33.02,
+      "metrics": {
+        "char_length": 405,
+        "word_count": 63,
+        "distinct_1": 0.1746,
+        "distinct_2": 0.1935,
+        "repetition_rate": 0.8254,
+        "domain_keywords_found": 2,
+        "domain_keywords_list": [
+          "controller",
+          "method"
+        ],
+        "syntax_score": 0
+      },
+      "prompt_id": "p07_rest_api",
+      "category": "Spring Boot REST API",
+      "prompt": "How does @RestController work in Spring Boot?"
+    },
+    {
+      "status": "success",
+      "output": "Spring Data JPA is a RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data J",
+      "full_output": "Spring Data JPA is a RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data J",
+      "generated_tokens": 80,
+      "generation_time_sec": 2.3917,
+      "tokens_per_sec": 33.45,
+      "metrics": {
+        "char_length": 345,
+        "word_count": 58,
+        "distinct_1": 0.1552,
+        "distinct_2": 0.1754,
+        "repetition_rate": 0.8448,
+        "domain_keywords_found": 2,
+        "domain_keywords_list": [
+          "spring",
+          "jpa"
+        ],
+        "syntax_score": 0
+      },
+      "prompt_id": "p08_jpa",
+      "category": "JPA & Persistence",
+      "prompt": "What is Spring Data JPA?"
+    },
+    {
+      "status": "success",
+      "output": "SQL JOIN.",
+      "full_output": "SQL JOIN.",
+      "generated_tokens": 4,
+      "generation_time_sec": 0.1877,
+      "tokens_per_sec": 21.31,
+      "metrics": {
+        "char_length": 9,
+        "word_count": 2,
+        "distinct_1": 1.0,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 2,
+        "domain_keywords_list": [
+          "sql",
+          "join"
+        ],
+        "syntax_score": 0
+      },
+      "prompt_id": "p09_sql",
+      "category": "SQL",
+      "prompt": "Explain SQL JOIN."
+    },
+    {
+      "status": "success",
+      "output": "HTTP status codes 200, 404, and 500.",
+      "full_output": "HTTP status codes 200, 404, and 500.",
+      "generated_tokens": 10,
+      "generation_time_sec": 0.3634,
+      "tokens_per_sec": 27.52,
+      "metrics": {
+        "char_length": 36,
+        "word_count": 7,
+        "distinct_1": 1.0,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 2,
+        "domain_keywords_list": [
+          "http",
+          "status"
+        ],
+        "syntax_score": 0
+      },
+      "prompt_id": "p10_status_codes",
+      "category": "HTTP Status Codes",
+      "prompt": "Explain HTTP status codes 200, 404, and 500."
+    },
+    {
+      "status": "success",
+      "output": "The NullPointerException is a NullPointerException that causes an exception to occur when an exception is thrown. The NullPointerException is a NullPointerException that causes an exception to occur when an exception is thrown. The NullPointerException is a NullPointerException that causes an exception to occur when an exception is thrown. The NullPointerException is a NullPointerException",
+      "full_output": "The NullPointerException is a NullPointerException that causes an exception to occur when an exception is thrown. The NullPointerException is a NullPointerException that causes an exception to occur when an exception is thrown. The NullPointerException is a NullPointerException that causes an exception to occur when an exception is thrown. The NullPointerException is a NullPointerException",
+      "generated_tokens": 80,
+      "generation_time_sec": 2.8598,
+      "tokens_per_sec": 27.97,
+      "metrics": {
+        "char_length": 392,
+        "word_count": 53,
+        "distinct_1": 0.2264,
+        "distinct_2": 0.2885,
+        "repetition_rate": 0.7736,
+        "domain_keywords_found": 1,
+        "domain_keywords_list": [
+          "exception"
+        ],
+        "syntax_score": 0
+      },
+      "prompt_id": "p11_debugging",
+      "category": "Debugging",
+      "prompt": "How do you fix a NullPointerException in Java?"
+    },
+    {
+      "status": "success",
+      "output": "public class UserService {",
+      "full_output": "public class UserService {",
+      "generated_tokens": 5,
+      "generation_time_sec": 2.5209,
+      "tokens_per_sec": 1.98,
+      "metrics": {
+        "char_length": 26,
+        "word_count": 3,
+        "distinct_1": 1.0,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 2,
+        "domain_keywords_list": [
+          "class",
+          "public"
+        ],
+        "syntax_score": 1
+      },
+      "prompt_id": "p12_codegen",
+      "category": "Simple Code Generation",
+      "prompt": "public class UserService {"
+    },
+    {
+      "status": "success",
+      "output": "@Transactional implements the @Transactional method to handle the request and the response.",
+      "full_output": "@Transactional implements the @Transactional method to handle the request and the response.",
+      "generated_tokens": 19,
+      "generation_time_sec": 0.6618,
+      "tokens_per_sec": 28.71,
+      "metrics": {
+        "char_length": 91,
+        "word_count": 12,
+        "distinct_1": 0.75,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.25,
+        "domain_keywords_found": 2,
+        "domain_keywords_list": [
+          "method",
+          "transactional"
+        ],
+        "syntax_score": 0
+      },
+      "prompt_id": "p13_code_explanation",
+      "category": "Explanation of Code",
+      "prompt": "What does @Transactional do in Spring Boot?"
+    }
+  ]
+}

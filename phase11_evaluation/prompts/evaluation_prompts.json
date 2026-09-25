@@ -1,0 +1,80 @@
+[
+  {
+    "id": "p01_oop",
+    "category": "Java OOP",
+    "prompt": "Explain the four pillars of OOP.",
+    "description": "Fundamental object-oriented programming concepts"
+  },
+  {
+    "id": "p02_inheritance",
+    "category": "Inheritance",
+    "prompt": "Explain inheritance in Java.",
+    "description": "Class extension and hierarchy in Java"
+  },
+  {
+    "id": "p03_interfaces",
+    "category": "Interfaces",
+    "prompt": "What is an interface in Java?",
+    "description": "Contract definition and abstraction"
+  },
+  {
+    "id": "p04_exceptions",
+    "category": "Exception Handling",
+    "prompt": "Explain exception handling in Java.",
+    "description": "Checked vs unchecked errors and try-catch"
+  },
+  {
+    "id": "p05_collections",
+    "category": "Collections",
+    "prompt": "Explain List and Map in Java.",
+    "description": "Java Collections Framework data structures"
+  },
+  {
+    "id": "p06_di",
+    "category": "Dependency Injection",
+    "prompt": "What is dependency injection in Spring Boot?",
+    "description": "Inversion of control and component wiring"
+  },
+  {
+    "id": "p07_rest_api",
+    "category": "Spring Boot REST API",
+    "prompt": "How does @RestController work in Spring Boot?",
+    "description": "HTTP request handling and JSON serialization"
+  },
+  {
+    "id": "p08_jpa",
+    "category": "JPA & Persistence",
+    "prompt": "What is Spring Data JPA?",
+    "description": "Repository abstraction and database persistence"
+  },
+  {
+    "id": "p09_sql",
+    "category": "SQL",
+    "prompt": "Explain SQL JOIN.",
+    "description": "Relational table joining operations"
+  },
+  {
+    "id": "p10_status_codes",
+    "category": "HTTP Status Codes",
+    "prompt": "Explain HTTP status codes 200, 404, and 500.",
+    "description": "Web communication status protocols"
+  },
+  {
+    "id": "p11_debugging",
+    "category": "Debugging",
+    "prompt": "How do you fix a NullPointerException in Java?",
+    "description": "Defensive coding and error diagnosis"
+  },
+  {
+    "id": "p12_codegen",
+    "category": "Simple Code Generation",
+    "prompt": "public class UserService {",
+    "description": "Autocomplete/generation prompt for a Java service class"
+  },
+  {
+    "id": "p13_code_explanation",
+    "category": "Explanation of Code",
+    "prompt": "What does @Transactional do in Spring Boot?",
+    "description": "Database transaction management annotation"
+  }
+]

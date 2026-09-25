@@ -1,0 +1,323 @@
+{
+  "metadata": {
+    "system_id": "minigpt_programming",
+    "display_name": "MiniGPT Programming (Phase 9)",
+    "category": "domain_scratch",
+    "architecture": "Custom Decoder-only Transformer (MiniGPT)",
+    "tokenizer_type": "Character-level CharTokenizer",
+    "vocabulary_size": 88,
+    "context_length": 64,
+    "n_layer": 2,
+    "n_head": 4,
+    "n_embd": 64,
+    "total_parameters": 114944,
+    "trainable_parameters": 114944,
+    "frozen_parameters": 0,
+    "trainable_percentage": 100.0,
+    "checkpoint_size_mb": 1.39,
+    "training_method": "From-scratch domain pretraining (Full parameter updates)",
+    "training_dataset": "Java & Spring Boot & SQL (data/programming.txt)",
+    "training_steps": 450,
+    "training_time": "24.06s",
+    "hardware": "CPU (Intel 12-core)"
+  },
+  "mode": "deterministic",
+  "generation_config": {
+    "max_new_tokens": 80,
+    "temperature": 0.0,
+    "top_k": null,
+    "device": "cpu"
+  },
+  "aggregates": {
+    "total_prompts": 13,
+    "successful_prompts": 13,
+    "failed_or_oov_prompts": 0,
+    "average_generation_time_sec": 0.1925,
+    "average_tokens_per_sec": 424.64,
+    "average_distinct_1": 0.7572,
+    "average_distinct_2": 0.8841,
+    "average_repetition_rate": 0.2428,
+    "average_domain_keywords_found": 0.23
+  },
+  "prompt_results": [
+    {
+      "status": "success",
+      "output": "derderderder er er userntrn ern eater eder eater eder eater eder estrer er er ea",
+      "full_output": "Explain the four pillars of OOP.derderderder er er userntrn ern eater eder eater eder eater eder estrer er er ea",
+      "generated_tokens": 80,
+      "generation_time_sec": 0.1544,
+      "tokens_per_sec": 518.19,
+      "metrics": {
+        "char_length": 80,
+        "word_count": 15,
+        "distinct_1": 0.5333,
+        "distinct_2": 0.7143,
+        "repetition_rate": 0.4667,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p01_oop",
+      "category": "Java OOP",
+      "prompt": "Explain the four pillars of OOP."
+    },
+    {
+      "status": "success",
+      "output": "g PEntessssssstorderder er er er er er eater urn username;\n                 turn",
+      "full_output": "Explain inheritance in Java.g PEntessssssstorderder er er er er er eater urn username;\n                 turn",
+      "generated_tokens": 80,
+      "generation_time_sec": 0.1628,
+      "tokens_per_sec": 491.55,
+      "metrics": {
+        "char_length": 80,
+        "word_count": 11,
+        "distinct_1": 0.6364,
+        "distinct_2": 0.7,
+        "repetition_rate": 0.3636,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 1
+      },
+      "prompt_id": "p02_inheritance",
+      "category": "Inheritance",
+      "prompt": "Explain inheritance in Java."
+    },
+    {
+      "status": "success",
+      "output": "// Sen Senction Seng pring ating tere er e er eate urn usernatern er eate urn u",
+      "full_output": "What is an interface in Java?\n// Sen Senction Seng pring ating tere er e er eate urn usernatern er eate urn u",
+      "generated_tokens": 80,
+      "generation_time_sec": 0.2013,
+      "tokens_per_sec": 397.48,
+      "metrics": {
+        "char_length": 80,
+        "word_count": 16,
+        "distinct_1": 0.75,
+        "distinct_2": 0.8667,
+        "repetition_rate": 0.25,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p03_interfaces",
+      "category": "Interfaces",
+      "prompt": "What is an interface in Java?"
+    },
+    {
+      "status": "success",
+      "output": "g Passssssssssstatrorder er er er er eate urn username;\n                 turnatu",
+      "full_output": "Explain exception handling in Java.g Passssssssssstatrorder er er er er eate urn username;\n                 turnatu",
+      "generated_tokens": 80,
+      "generation_time_sec": 0.2005,
+      "tokens_per_sec": 399.08,
+      "metrics": {
+        "char_length": 80,
+        "word_count": 10,
+        "distinct_1": 0.7,
+        "distinct_2": 0.7778,
+        "repetition_rate": 0.3,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 1
+      },
+      "prompt_id": "p04_exceptions",
+      "category": "Exception Handling",
+      "prompt": "Explain exception handling in Java."
+    },
+    {
+      "status": "success",
+      "output": "geser Passsssssssstatatre us userntrnde er er er username;\n                 user",
+      "full_output": "Explain List and Map in Java.geser Passsssssssstatatre us userntrnde er er er username;\n                 user",
+      "generated_tokens": 80,
+      "generation_time_sec": 0.2248,
+      "tokens_per_sec": 355.86,
+      "metrics": {
+        "char_length": 80,
+        "word_count": 9,
+        "distinct_1": 0.7778,
+        "distinct_2": 0.875,
+        "repetition_rate": 0.2222,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 1
+      },
+      "prompt_id": "p05_collections",
+      "category": "Collections",
+      "prompt": "Explain List and Map in Java."
+    },
+    {
+      "status": "success",
+      "output": "//////////     pencection Spring ating atere eder eder eate te ter urn urn user",
+      "full_output": "What is dependency injection in Spring Boot?\n//////////     pencection Spring ating atere eder eder eate te ter urn urn user",
+      "generated_tokens": 80,
+      "generation_time_sec": 0.2469,
+      "tokens_per_sec": 324.0,
+      "metrics": {
+        "char_length": 80,
+        "word_count": 12,
+        "distinct_1": 0.8333,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.1667,
+        "domain_keywords_found": 1,
+        "domain_keywords_list": [
+          "spring"
+        ],
+        "syntax_score": 0
+      },
+      "prompt_id": "p06_di",
+      "category": "Dependency Injection",
+      "prompt": "What is dependency injection in Spring Boot?"
+    },
+    {
+      "status": "success",
+      "output": "////        pection ction ateder eder eatededer eder eatededer er edestrer er e",
+      "full_output": "How does @RestController work in Spring Boot?\n////        pection ction ateder eder eatededer eder eatededer er edestrer er e",
+      "generated_tokens": 80,
+      "generation_time_sec": 0.2287,
+      "tokens_per_sec": 349.85,
+      "metrics": {
+        "char_length": 80,
+        "word_count": 11,
+        "distinct_1": 0.7273,
+        "distinct_2": 0.9,
+        "repetition_rate": 0.2727,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p07_rest_api",
+      "category": "Spring Boot REST API",
+      "prompt": "How does @RestController work in Spring Boot?"
+    },
+    {
+      "status": "success",
+      "output": "/////                  pection ction ate atere eder eder eatededer edest trerRe",
+      "full_output": "What is Spring Data JPA?\n/////                  pection ction ate atere eder eder eatededer edest trerRe",
+      "generated_tokens": 80,
+      "generation_time_sec": 0.1762,
+      "tokens_per_sec": 453.98,
+      "metrics": {
+        "char_length": 80,
+        "word_count": 9,
+        "distinct_1": 0.8889,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.1111,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p08_jpa",
+      "category": "JPA & Persistence",
+      "prompt": "What is Spring Data JPA?"
+    },
+    {
+      "status": "success",
+      "output": "gerder username usernte us username;\n                 returnate = urnate = urnde",
+      "full_output": "Explain SQL JOIN.gerder username usernte us username;\n                 returnate = urnate = urnde",
+      "generated_tokens": 80,
+      "generation_time_sec": 0.1879,
+      "tokens_per_sec": 425.73,
+      "metrics": {
+        "char_length": 80,
+        "word_count": 8,
+        "distinct_1": 0.875,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.125,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 1
+      },
+      "prompt_id": "p09_sql",
+      "category": "SQL",
+      "prompt": "Explain SQL JOIN."
+    },
+    {
+      "status": "success",
+      "output": "public ReseseEntory = = = usernater = = = = username;",
+      "full_output": "Explain HTTP status codes 200, 404, and 500.              public ReseseEntory = = = usernater = = = = username;\n            ",
+      "generated_tokens": 80,
+      "generation_time_sec": 0.1767,
+      "tokens_per_sec": 452.65,
+      "metrics": {
+        "char_length": 80,
+        "word_count": 4,
+        "distinct_1": 1.0,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 1,
+        "domain_keywords_list": [
+          "public"
+        ],
+        "syntax_score": 2
+      },
+      "prompt_id": "p10_status_codes",
+      "category": "HTTP Status Codes",
+      "prompt": "Explain HTTP status codes 200, 404, and 500."
+    },
+    {
+      "status": "success",
+      "output": "////// Spiction Spublictiction ate ate ate e urn urn username e usernte urn {",
+      "full_output": "How do you fix a NullPointerException in Java?\n////// Spiction Spublictiction ate ate ate e urn urn username e usernte urn {\n ",
+      "generated_tokens": 80,
+      "generation_time_sec": 0.1698,
+      "tokens_per_sec": 471.06,
+      "metrics": {
+        "char_length": 80,
+        "word_count": 12,
+        "distinct_1": 0.5833,
+        "distinct_2": 0.9091,
+        "repetition_rate": 0.4167,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p11_debugging",
+      "category": "Debugging",
+      "prompt": "How do you fix a NullPointerException in Java?"
+    },
+    {
+      "status": "success",
+      "output": "return urn username;\n                 returnatete = = = urnate =",
+      "full_output": "public class UserService {\n               return urn username;\n                 returnatete = = = urnate =",
+      "generated_tokens": 80,
+      "generation_time_sec": 0.1563,
+      "tokens_per_sec": 511.83,
+      "metrics": {
+        "char_length": 80,
+        "word_count": 5,
+        "distinct_1": 1.0,
+        "distinct_2": 1.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 1,
+        "domain_keywords_list": [
+          "return"
+        ],
+        "syntax_score": 2
+      },
+      "prompt_id": "p12_codegen",
+      "category": "Simple Code Generation",
+      "prompt": "public class UserService {"
+    },
+    {
+      "status": "success",
+      "output": "///////       pppictiondation cte ate ate ate ate te te urn urn urn in username",
+      "full_output": "What does @Transactional do in Spring Boot?\n///////       pppictiondation cte ate ate ate ate te te urn urn urn in username",
+      "generated_tokens": 80,
+      "generation_time_sec": 0.2168,
+      "tokens_per_sec": 369.01,
+      "metrics": {
+        "char_length": 80,
+        "word_count": 13,
+        "distinct_1": 0.5385,
+        "distinct_2": 0.75,
+        "repetition_rate": 0.4615,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p13_code_explanation",
+      "category": "Explanation of Code",
+      "prompt": "What does @Transactional do in Spring Boot?"
+    }
+  ]
+}

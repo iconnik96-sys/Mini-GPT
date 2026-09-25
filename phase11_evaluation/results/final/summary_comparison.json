@@ -1,0 +1,706 @@
+{
+  "evaluation_title": "Phase 11 Cross-System Model Evaluation",
+  "systems_evaluated": [
+    "minigpt_baseline",
+    "minigpt_programming",
+    "distilgpt2_base",
+    "distilgpt2_lora"
+  ],
+  "model_metadata": {
+    "minigpt_baseline": {
+      "system_id": "minigpt_baseline",
+      "display_name": "MiniGPT Baseline (Phase 8)",
+      "category": "from_scratch",
+      "architecture": "Custom Decoder-only Transformer (MiniGPT)",
+      "tokenizer_type": "Character-level CharTokenizer",
+      "vocabulary_size": 52,
+      "context_length": 64,
+      "n_layer": 2,
+      "n_head": 4,
+      "n_embd": 64,
+      "total_parameters": 110336,
+      "trainable_parameters": 110336,
+      "frozen_parameters": 0,
+      "trainable_percentage": 100.0,
+      "checkpoint_size_mb": 1.33,
+      "training_method": "From-scratch pretraining (Full parameter updates)",
+      "training_dataset": "Shakespeare Coriolanus (data/coriolanus.txt)",
+      "training_steps": 150,
+      "training_time": "8.37s",
+      "hardware": "CPU (Intel 12-core)"
+    },
+    "minigpt_programming": {
+      "system_id": "minigpt_programming",
+      "display_name": "MiniGPT Programming (Phase 9)",
+      "category": "domain_scratch",
+      "architecture": "Custom Decoder-only Transformer (MiniGPT)",
+      "tokenizer_type": "Character-level CharTokenizer",
+      "vocabulary_size": 88,
+      "context_length": 64,
+      "n_layer": 2,
+      "n_head": 4,
+      "n_embd": 64,
+      "total_parameters": 114944,
+      "trainable_parameters": 114944,
+      "frozen_parameters": 0,
+      "trainable_percentage": 100.0,
+      "checkpoint_size_mb": 1.39,
+      "training_method": "From-scratch domain pretraining (Full parameter updates)",
+      "training_dataset": "Java & Spring Boot & SQL (data/programming.txt)",
+      "training_steps": 450,
+      "training_time": "24.06s",
+      "hardware": "CPU (Intel 12-core)"
+    },
+    "distilgpt2_base": {
+      "system_id": "distilgpt2_base",
+      "display_name": "DistilGPT-2 Base (Pretrained)",
+      "category": "pretrained_base",
+      "architecture": "DistilGPT2 LM Head Model (6 layers, 12 heads, 768 dim)",
+      "tokenizer_type": "Byte-level BPE (GPT2TokenizerFast)",
+      "vocabulary_size": 50257,
+      "context_length": 1024,
+      "n_layer": 6,
+      "n_head": 12,
+      "n_embd": 768,
+      "total_parameters": 81912576,
+      "trainable_parameters": 0,
+      "frozen_parameters": 81912576,
+      "trainable_percentage": 0.0,
+      "checkpoint_size_mb": 334.35,
+      "training_method": "Pretrained on WebText by Hugging Face (Zero fine-tuning)",
+      "training_dataset": "WebText / OpenWebText",
+      "training_steps": "Pretrained",
+      "training_time": "N/A (Pretrained weights)",
+      "hardware": "CPU (Intel 12-core)"
+    },
+    "distilgpt2_lora": {
+      "system_id": "distilgpt2_lora",
+      "display_name": "DistilGPT-2 + LoRA (Phase 10)",
+      "category": "peft_lora",
+      "architecture": "DistilGPT2 + Low-Rank Adaptation (LoRA r=8, alpha=16 on c_attn)",
+      "tokenizer_type": "Byte-level BPE (GPT2TokenizerFast)",
+      "vocabulary_size": 50257,
+      "context_length": 1024,
+      "n_layer": 6,
+      "n_head": 12,
+      "n_embd": 768,
+      "total_parameters": 82060032,
+      "trainable_parameters": 147456,
+      "frozen_parameters": 81912576,
+      "trainable_percentage": 0.1797,
+      "checkpoint_size_mb": 3.96,
+      "training_method": "Parameter-Efficient Fine-Tuning (LoRA)",
+      "training_dataset": "Programming Instructions (phase10_lora/data/programming_instructions.json)",
+      "training_steps": 48,
+      "training_time": "178.44s",
+      "hardware": "CPU (Intel 12-core)"
+    }
+  },
+  "aggregate_performance": {
+    "minigpt_baseline": {
+      "total_prompts": 13,
+      "successful_prompts": 1,
+      "failed_or_oov_prompts": 12,
+      "average_generation_time_sec": 0.3592,
+      "average_tokens_per_sec": 222.69,
+      "average_distinct_1": 0.6,
+      "average_distinct_2": 0.9286,
+      "average_repetition_rate": 0.4,
+      "average_domain_keywords_found": 0.0
+    },
+    "minigpt_programming": {
+      "total_prompts": 13,
+      "successful_prompts": 13,
+      "failed_or_oov_prompts": 0,
+      "average_generation_time_sec": 0.1925,
+      "average_tokens_per_sec": 424.64,
+      "average_distinct_1": 0.7572,
+      "average_distinct_2": 0.8841,
+      "average_repetition_rate": 0.2428,
+      "average_domain_keywords_found": 0.23
+    },
+    "distilgpt2_base": {
+      "total_prompts": 13,
+      "successful_prompts": 13,
+      "failed_or_oov_prompts": 0,
+      "average_generation_time_sec": 2.4145,
+      "average_tokens_per_sec": 33.07,
+      "average_distinct_1": 0.1441,
+      "average_distinct_2": 0.1624,
+      "average_repetition_rate": 0.8559,
+      "average_domain_keywords_found": 0.85
+    },
+    "distilgpt2_lora": {
+      "total_prompts": 13,
+      "successful_prompts": 13,
+      "failed_or_oov_prompts": 0,
+      "average_generation_time_sec": 1.5229,
+      "average_tokens_per_sec": 26.62,
+      "average_distinct_1": 0.5936,
+      "average_distinct_2": 0.631,
+      "average_repetition_rate": 0.4064,
+      "average_domain_keywords_found": 1.46
+    }
+  },
+  "side_by_side_prompts": [
+    {
+      "prompt_id": "p01_oop",
+      "category": "Java OOP",
+      "prompt": "Explain the four pillars of OOP.",
+      "system_responses": {
+        "minigpt_baseline": {
+          "status": "oov_rejected",
+          "output": "",
+          "tokens_generated": 0,
+          "generation_time_sec": 0.0,
+          "tokens_per_sec": 0.0,
+          "repetition_rate": 0.0,
+          "distinct_1": 0.0
+        },
+        "minigpt_programming": {
+          "status": "success",
+          "output": "derderderder er er userntrn ern eater eder eater eder eater eder estrer er er ea",
+          "tokens_generated": 80,
+          "generation_time_sec": 0.1544,
+          "tokens_per_sec": 518.19,
+          "repetition_rate": 0.4667,
+          "distinct_1": 0.5333
+        },
+        "distilgpt2_base": {
+          "status": "success",
+          "output": "The following instructions are for the following instructions:\nThe following instructions are for the following instructions:\nThe following instructions are for the following instructions:\nThe following instructions are for the following instructions:\nThe following instructions are for the following instructions:\nThe following instructions are for the following instructions:\nThe following instructions are for the following instructions:\nThe following instructions are for the following instructions:",
+          "tokens_generated": 79,
+          "generation_time_sec": 2.5532,
+          "tokens_per_sec": 30.94,
+          "repetition_rate": 0.9219,
+          "distinct_1": 0.0781
+        },
+        "distilgpt2_lora": {
+          "status": "success",
+          "output": "The four pillars of OOP are:\n1) OOP is a collection of data structures that are immutable and immutable. The data structure is immutable and immutable. The data structure is immutable and immutable. The data structure is immutable and immutable. The data structure is immutable and immutable. The data structure is immutable and immutable. The data structure is immutable and immutable. The data structure is immutable and immutable",
+          "tokens_generated": 80,
+          "generation_time_sec": 2.6234,
+          "tokens_per_sec": 30.49,
+          "repetition_rate": 0.7647,
+          "distinct_1": 0.2353
+        }
+      }
+    },
+    {
+      "prompt_id": "p02_inheritance",
+      "category": "Inheritance",
+      "prompt": "Explain inheritance in Java.",
+      "system_responses": {
+        "minigpt_baseline": {
+          "status": "oov_rejected",
+          "output": "",
+          "tokens_generated": 0,
+          "generation_time_sec": 0.0,
+          "tokens_per_sec": 0.0,
+          "repetition_rate": 0.0,
+          "distinct_1": 0.0
+        },
+        "minigpt_programming": {
+          "status": "success",
+          "output": "g PEntessssssstorderder er er er er er eater urn username;\n                 turn",
+          "tokens_generated": 80,
+          "generation_time_sec": 0.1628,
+          "tokens_per_sec": 491.55,
+          "repetition_rate": 0.3636,
+          "distinct_1": 0.6364
+        },
+        "distilgpt2_base": {
+          "status": "success",
+          "output": "Explain inheritance in Java.\n### Response:\nExplain inheritance in Java.\n### Response:\nExplain inheritance in Java.\n### Response:\nExplain inheritance in Java.\n### Response:\nExplain inheritance in Java.\n### Response:\nExplain inheritance in Java.\n### Response:\nExplain inheritance in Java.\n### Response:\nExplain inheritance",
+          "tokens_generated": 80,
+          "generation_time_sec": 2.4478,
+          "tokens_per_sec": 32.68,
+          "repetition_rate": 0.8649,
+          "distinct_1": 0.1351
+        },
+        "distilgpt2_lora": {
+          "status": "success",
+          "output": "Explain inheritance in Java.",
+          "tokens_generated": 6,
+          "generation_time_sec": 0.2441,
+          "tokens_per_sec": 24.58,
+          "repetition_rate": 0.0,
+          "distinct_1": 1.0
+        }
+      }
+    },
+    {
+      "prompt_id": "p03_interfaces",
+      "category": "Interfaces",
+      "prompt": "What is an interface in Java?",
+      "system_responses": {
+        "minigpt_baseline": {
+          "status": "oov_rejected",
+          "output": "",
+          "tokens_generated": 0,
+          "generation_time_sec": 0.0,
+          "tokens_per_sec": 0.0,
+          "repetition_rate": 0.0,
+          "distinct_1": 0.0
+        },
+        "minigpt_programming": {
+          "status": "success",
+          "output": "// Sen Senction Seng pring ating tere er e er eate urn usernatern er eate urn u",
+          "tokens_generated": 80,
+          "generation_time_sec": 0.2013,
+          "tokens_per_sec": 397.48,
+          "repetition_rate": 0.25,
+          "distinct_1": 0.75
+        },
+        "distilgpt2_base": {
+          "status": "success",
+          "output": "What is an interface in Java?\n### Response:\nWhat is an interface in Java?\n### Response:\nWhat is an interface in Java?\n### Response:\nWhat is an interface in Java?\n### Response:\nWhat is an interface in Java?\n### Response:\nWhat is an interface in Java?\n### Response:\nWhat is an interface in Java?",
+          "tokens_generated": 79,
+          "generation_time_sec": 2.4046,
+          "tokens_per_sec": 32.85,
+          "repetition_rate": 0.8542,
+          "distinct_1": 0.1458
+        },
+        "distilgpt2_lora": {
+          "status": "success",
+          "output": "An interface is a class that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface that implements a class interface",
+          "tokens_generated": 80,
+          "generation_time_sec": 2.6486,
+          "tokens_per_sec": 30.2,
+          "repetition_rate": 0.9125,
+          "distinct_1": 0.0875
+        }
+      }
+    },
+    {
+      "prompt_id": "p04_exceptions",
+      "category": "Exception Handling",
+      "prompt": "Explain exception handling in Java.",
+      "system_responses": {
+        "minigpt_baseline": {
+          "status": "oov_rejected",
+          "output": "",
+          "tokens_generated": 0,
+          "generation_time_sec": 0.0,
+          "tokens_per_sec": 0.0,
+          "repetition_rate": 0.0,
+          "distinct_1": 0.0
+        },
+        "minigpt_programming": {
+          "status": "success",
+          "output": "g Passssssssssstatrorder er er er er eate urn username;\n                 turnatu",
+          "tokens_generated": 80,
+          "generation_time_sec": 0.2005,
+          "tokens_per_sec": 399.08,
+          "repetition_rate": 0.3,
+          "distinct_1": 0.7
+        },
+        "distilgpt2_base": {
+          "status": "success",
+          "output": "Explain exception handling in Java.\n### Response:\nExplain exception handling in Java.\n### Response:\nExplain exception handling in Java.\n### Response:\nExplain exception handling in Java.\n### Response:\nExplain exception handling in Java.\n### Response:\nExplain exception handling in Java.\n### Response:\nExplain exception handling in Java.",
+          "tokens_generated": 79,
+          "generation_time_sec": 2.3646,
+          "tokens_per_sec": 33.41,
+          "repetition_rate": 0.8537,
+          "distinct_1": 0.1463
+        },
+        "distilgpt2_lora": {
+          "status": "success",
+          "output": "Exception handling in Java.",
+          "tokens_generated": 5,
+          "generation_time_sec": 0.2049,
+          "tokens_per_sec": 24.4,
+          "repetition_rate": 0.0,
+          "distinct_1": 1.0
+        }
+      }
+    },
+    {
+      "prompt_id": "p05_collections",
+      "category": "Collections",
+      "prompt": "Explain List and Map in Java.",
+      "system_responses": {
+        "minigpt_baseline": {
+          "status": "oov_rejected",
+          "output": "",
+          "tokens_generated": 0,
+          "generation_time_sec": 0.0,
+          "tokens_per_sec": 0.0,
+          "repetition_rate": 0.0,
+          "distinct_1": 0.0
+        },
+        "minigpt_programming": {
+          "status": "success",
+          "output": "geser Passsssssssstatatre us userntrnde er er er username;\n                 user",
+          "tokens_generated": 80,
+          "generation_time_sec": 0.2248,
+          "tokens_per_sec": 355.86,
+          "repetition_rate": 0.2222,
+          "distinct_1": 0.7778
+        },
+        "distilgpt2_base": {
+          "status": "success",
+          "output": "The following instructions are used to describe a task.\nThe following instructions are used to describe a task.\nThe following instructions are used to describe a task.\nThe following instructions are used to describe a task.\nThe following instructions are used to describe a task.\nThe following instructions are used to describe a task.\nThe following instructions are used to describe a task.\nThe following instructions",
+          "tokens_generated": 80,
+          "generation_time_sec": 2.5213,
+          "tokens_per_sec": 31.73,
+          "repetition_rate": 0.8636,
+          "distinct_1": 0.1364
+        },
+        "distilgpt2_lora": {
+          "status": "success",
+          "output": "Explain List and Map in Java.",
+          "tokens_generated": 8,
+          "generation_time_sec": 0.2757,
+          "tokens_per_sec": 29.02,
+          "repetition_rate": 0.0,
+          "distinct_1": 1.0
+        }
+      }
+    },
+    {
+      "prompt_id": "p06_di",
+      "category": "Dependency Injection",
+      "prompt": "What is dependency injection in Spring Boot?",
+      "system_responses": {
+        "minigpt_baseline": {
+          "status": "success",
+          "output": "Whe Citititize Cizen:\nWhe Cizen:\nWhen:\nWhen:\nWhe he he he atous titithe the t",
+          "tokens_generated": 80,
+          "generation_time_sec": 0.3592,
+          "tokens_per_sec": 222.69,
+          "repetition_rate": 0.4,
+          "distinct_1": 0.6
+        },
+        "minigpt_programming": {
+          "status": "success",
+          "output": "//////////     pencection Spring ating atere eder eder eate te ter urn urn user",
+          "tokens_generated": 80,
+          "generation_time_sec": 0.2469,
+          "tokens_per_sec": 324.0,
+          "repetition_rate": 0.1667,
+          "distinct_1": 0.8333
+        },
+        "distilgpt2_base": {
+          "status": "success",
+          "output": "What is dependency injection in Spring Boot?\n### Response:\nWhat is dependency injection in Spring Boot?\n### Response:\nWhat is dependency injection in Spring Boot?\n### Response:\nWhat is dependency injection in Spring Boot?\n### Response:\nWhat is dependency injection in Spring Boot?\n### Response:\nWhat is dependency injection in Spring Boot?\n### Response:\nWhat is",
+          "tokens_generated": 80,
+          "generation_time_sec": 2.362,
+          "tokens_per_sec": 33.87,
+          "repetition_rate": 0.84,
+          "distinct_1": 0.16
+        },
+        "distilgpt2_lora": {
+          "status": "success",
+          "output": "Spring Boot is a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a framework that provides a",
+          "tokens_generated": 80,
+          "generation_time_sec": 2.3927,
+          "tokens_per_sec": 33.43,
+          "repetition_rate": 0.9125,
+          "distinct_1": 0.0875
+        }
+      }
+    },
+    {
+      "prompt_id": "p07_rest_api",
+      "category": "Spring Boot REST API",
+      "prompt": "How does @RestController work in Spring Boot?",
+      "system_responses": {
+        "minigpt_baseline": {
+          "status": "oov_rejected",
+          "output": "",
+          "tokens_generated": 0,
+          "generation_time_sec": 0.0,
+          "tokens_per_sec": 0.0,
+          "repetition_rate": 0.0,
+          "distinct_1": 0.0
+        },
+        "minigpt_programming": {
+          "status": "success",
+          "output": "////        pection ction ateder eder eatededer eder eatededer er edestrer er e",
+          "tokens_generated": 80,
+          "generation_time_sec": 0.2287,
+          "tokens_per_sec": 349.85,
+          "repetition_rate": 0.2727,
+          "distinct_1": 0.7273
+        },
+        "distilgpt2_base": {
+          "status": "success",
+          "output": "How does @RestController work in Spring Boot?\n### Response:\nHow does @RestController work in Spring Boot?\n### Response:\nHow does @RestController work in Spring Boot?\n### Response:\nHow does @RestController work in Spring Boot?\n### Response:\nHow does @RestController work in Spring Boot?\n### Response:\nHow does @RestController",
+          "tokens_generated": 80,
+          "generation_time_sec": 2.3349,
+          "tokens_per_sec": 34.26,
+          "repetition_rate": 0.814,
+          "distinct_1": 0.186
+        },
+        "distilgpt2_lora": {
+          "status": "success",
+          "output": "@RestController is a method that returns a single request to the controller. @RestController is a method that returns a single request to the controller. @RestController is a method that returns a single request to the controller. @RestController is a method that returns a single request to the controller. @RestController is a method that returns a single request to the controller. @RestController is a",
+          "tokens_generated": 80,
+          "generation_time_sec": 2.4227,
+          "tokens_per_sec": 33.02,
+          "repetition_rate": 0.8254,
+          "distinct_1": 0.1746
+        }
+      }
+    },
+    {
+      "prompt_id": "p08_jpa",
+      "category": "JPA & Persistence",
+      "prompt": "What is Spring Data JPA?",
+      "system_responses": {
+        "minigpt_baseline": {
+          "status": "oov_rejected",
+          "output": "",
+          "tokens_generated": 0,
+          "generation_time_sec": 0.0,
+          "tokens_per_sec": 0.0,
+          "repetition_rate": 0.0,
+          "distinct_1": 0.0
+        },
+        "minigpt_programming": {
+          "status": "success",
+          "output": "/////                  pection ction ate atere eder eder eatededer edest trerRe",
+          "tokens_generated": 80,
+          "generation_time_sec": 0.1762,
+          "tokens_per_sec": 453.98,
+          "repetition_rate": 0.1111,
+          "distinct_1": 0.8889
+        },
+        "distilgpt2_base": {
+          "status": "success",
+          "output": "What is Spring Data JPA?\n### Response:\nWhat is Spring Data JPA?\n### Response:\nWhat is Spring Data JPA?\n### Response:\nWhat is Spring Data JPA?\n### Response:\nWhat is Spring Data JPA?\n### Response:\nWhat is Spring Data JPA?\n### Response:\nWhat is Spring Data JPA?",
+          "tokens_generated": 79,
+          "generation_time_sec": 2.2164,
+          "tokens_per_sec": 35.64,
+          "repetition_rate": 0.8537,
+          "distinct_1": 0.1463
+        },
+        "distilgpt2_lora": {
+          "status": "success",
+          "output": "Spring Data JPA is a RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data JPA that provides RESTful Data J",
+          "tokens_generated": 80,
+          "generation_time_sec": 2.3917,
+          "tokens_per_sec": 33.45,
+          "repetition_rate": 0.8448,
+          "distinct_1": 0.1552
+        }
+      }
+    },
+    {
+      "prompt_id": "p09_sql",
+      "category": "SQL",
+      "prompt": "Explain SQL JOIN.",
+      "system_responses": {
+        "minigpt_baseline": {
+          "status": "oov_rejected",
+          "output": "",
+          "tokens_generated": 0,
+          "generation_time_sec": 0.0,
+          "tokens_per_sec": 0.0,
+          "repetition_rate": 0.0,
+          "distinct_1": 0.0
+        },
+        "minigpt_programming": {
+          "status": "success",
+          "output": "gerder username usernte us username;\n                 returnate = urnate = urnde",
+          "tokens_generated": 80,
+          "generation_time_sec": 0.1879,
+          "tokens_per_sec": 425.73,
+          "repetition_rate": 0.125,
+          "distinct_1": 0.875
+        },
+        "distilgpt2_base": {
+          "status": "success",
+          "output": "The following is an instruction that describes a task. Write a response that appropriately completes the request.\n### Response:\nThe following is an instruction that describes a task. Write a response that appropriately completes the request.\n### Response:\nThe following is an instruction that describes a task. Write a response that appropriately completes the request.\n### Response:\nThe following is an instruction that describes a",
+          "tokens_generated": 80,
+          "generation_time_sec": 2.2298,
+          "tokens_per_sec": 35.88,
+          "repetition_rate": 0.7742,
+          "distinct_1": 0.2258
+        },
+        "distilgpt2_lora": {
+          "status": "success",
+          "output": "SQL JOIN.",
+          "tokens_generated": 4,
+          "generation_time_sec": 0.1877,
+          "tokens_per_sec": 21.31,
+          "repetition_rate": 0.0,
+          "distinct_1": 1.0
+        }
+      }
+    },
+    {
+      "prompt_id": "p10_status_codes",
+      "category": "HTTP Status Codes",
+      "prompt": "Explain HTTP status codes 200, 404, and 500.",
+      "system_responses": {
+        "minigpt_baseline": {
+          "status": "oov_rejected",
+          "output": "",
+          "tokens_generated": 0,
+          "generation_time_sec": 0.0,
+          "tokens_per_sec": 0.0,
+          "repetition_rate": 0.0,
+          "distinct_1": 0.0
+        },
+        "minigpt_programming": {
+          "status": "success",
+          "output": "public ReseseEntory = = = usernater = = = = username;",
+          "tokens_generated": 80,
+          "generation_time_sec": 0.1767,
+          "tokens_per_sec": 452.65,
+          "repetition_rate": 0.0,
+          "distinct_1": 1.0
+        },
+        "distilgpt2_base": {
+          "status": "success",
+          "output": "The response is a response that is sent to the server.\n### Response:\nThe response is a response that is sent to the server.\n### Response:\nThe response is a response that is sent to the server.\n### Response:\nThe response is a response that is sent to the server.\n### Response:\nThe response is a response that is sent to the server.",
+          "tokens_generated": 80,
+          "generation_time_sec": 2.3388,
+          "tokens_per_sec": 34.21,
+          "repetition_rate": 0.8644,
+          "distinct_1": 0.1356
+        },
+        "distilgpt2_lora": {
+          "status": "success",
+          "output": "HTTP status codes 200, 404, and 500.",
+          "tokens_generated": 10,
+          "generation_time_sec": 0.3634,
+          "tokens_per_sec": 27.52,
+          "repetition_rate": 0.0,
+          "distinct_1": 1.0
+        }
+      }
+    },
+    {
+      "prompt_id": "p11_debugging",
+      "category": "Debugging",
+      "prompt": "How do you fix a NullPointerException in Java?",
+      "system_responses": {
+        "minigpt_baseline": {
+          "status": "oov_rejected",
+          "output": "",
+          "tokens_generated": 0,
+          "generation_time_sec": 0.0,
+          "tokens_per_sec": 0.0,
+          "repetition_rate": 0.0,
+          "distinct_1": 0.0
+        },
+        "minigpt_programming": {
+          "status": "success",
+          "output": "////// Spiction Spublictiction ate ate ate e urn urn username e usernte urn {",
+          "tokens_generated": 80,
+          "generation_time_sec": 0.1698,
+          "tokens_per_sec": 471.06,
+          "repetition_rate": 0.4167,
+          "distinct_1": 0.5833
+        },
+        "distilgpt2_base": {
+          "status": "success",
+          "output": "The NullPointerException is a Java object that is not a Java object. It is a Java object that is not a Java object. It is a Java object that is not a Java object. It is a Java object that is not a Java object. It is a Java object that is not a Java object. It is a Java object that is not a Java object. It is a Java",
+          "tokens_generated": 80,
+          "generation_time_sec": 2.3585,
+          "tokens_per_sec": 33.92,
+          "repetition_rate": 0.8732,
+          "distinct_1": 0.1268
+        },
+        "distilgpt2_lora": {
+          "status": "success",
+          "output": "The NullPointerException is a NullPointerException that causes an exception to occur when an exception is thrown. The NullPointerException is a NullPointerException that causes an exception to occur when an exception is thrown. The NullPointerException is a NullPointerException that causes an exception to occur when an exception is thrown. The NullPointerException is a NullPointerException",
+          "tokens_generated": 80,
+          "generation_time_sec": 2.8598,
+          "tokens_per_sec": 27.97,
+          "repetition_rate": 0.7736,
+          "distinct_1": 0.2264
+        }
+      }
+    },
+    {
+      "prompt_id": "p12_codegen",
+      "category": "Simple Code Generation",
+      "prompt": "public class UserService {",
+      "system_responses": {
+        "minigpt_baseline": {
+          "status": "oov_rejected",
+          "output": "",
+          "tokens_generated": 0,
+          "generation_time_sec": 0.0,
+          "tokens_per_sec": 0.0,
+          "repetition_rate": 0.0,
+          "distinct_1": 0.0
+        },
+        "minigpt_programming": {
+          "status": "success",
+          "output": "return urn username;\n                 returnatete = = = urnate =",
+          "tokens_generated": 80,
+          "generation_time_sec": 0.1563,
+          "tokens_per_sec": 511.83,
+          "repetition_rate": 0.0,
+          "distinct_1": 1.0
+        },
+        "distilgpt2_base": {
+          "status": "success",
+          "output": "public class UserService {\n\n}\npublic class UserService {\n}\npublic class UserService {\n}\npublic class UserService {\n}\npublic class UserService {\n}\npublic class UserService {\n}\npublic class UserService {\n}\npublic class UserService {\n}\npublic class UserService {\n}\npublic class UserService {\n}",
+          "tokens_generated": 80,
+          "generation_time_sec": 2.7013,
+          "tokens_per_sec": 29.62,
+          "repetition_rate": 0.9,
+          "distinct_1": 0.1
+        },
+        "distilgpt2_lora": {
+          "status": "success",
+          "output": "public class UserService {",
+          "tokens_generated": 5,
+          "generation_time_sec": 2.5209,
+          "tokens_per_sec": 1.98,
+          "repetition_rate": 0.0,
+          "distinct_1": 1.0
+        }
+      }
+    },
+    {
+      "prompt_id": "p13_code_explanation",
+      "category": "Explanation of Code",
+      "prompt": "What does @Transactional do in Spring Boot?",
+      "system_responses": {
+        "minigpt_baseline": {
+          "status": "oov_rejected",
+          "output": "",
+          "tokens_generated": 0,
+          "generation_time_sec": 0.0,
+          "tokens_per_sec": 0.0,
+          "repetition_rate": 0.0,
+          "distinct_1": 0.0
+        },
+        "minigpt_programming": {
+          "status": "success",
+          "output": "///////       pppictiondation cte ate ate ate ate te te urn urn urn in username",
+          "tokens_generated": 80,
+          "generation_time_sec": 0.2168,
+          "tokens_per_sec": 369.01,
+          "repetition_rate": 0.4615,
+          "distinct_1": 0.5385
+        },
+        "distilgpt2_base": {
+          "status": "success",
+          "output": "What is the current state of the application?\n### Response:\nWhat is the current state of the application?\n### Response:\nWhat is the current state of the application?\n### Response:\nWhat is the current state of the application?\n### Response:\nWhat is the current state of the application?\n### Response:\nWhat is the current state of the application?",
+          "tokens_generated": 79,
+          "generation_time_sec": 2.5555,
+          "tokens_per_sec": 30.91,
+          "repetition_rate": 0.8491,
+          "distinct_1": 0.1509
+        },
+        "distilgpt2_lora": {
+          "status": "success",
+          "output": "@Transactional implements the @Transactional method to handle the request and the response.",
+          "tokens_generated": 19,
+          "generation_time_sec": 0.6618,
+          "tokens_per_sec": 28.71,
+          "repetition_rate": 0.25,
+          "distinct_1": 0.75
+        }
+      }
+    }
+  ]
+}

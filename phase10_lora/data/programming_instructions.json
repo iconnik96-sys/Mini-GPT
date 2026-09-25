@@ -1,0 +1,122 @@
+[
+  {
+    "instruction": "What is dependency injection in Spring Boot?",
+    "response": "Dependency Injection (DI) in Spring Boot is a design pattern where the Spring IoC (Inversion of Control) container automatically injects required dependencies into a class at runtime, rather than the class creating them itself using 'new'. It decouples object creation from business logic, promotes loose coupling, and makes components easily testable through mocking. In Spring Boot, dependencies are commonly injected via constructor injection using @Autowired."
+  },
+  {
+    "instruction": "Explain the difference between an interface and an abstract class in Java.",
+    "response": "In Java, an interface defines a contract specifying what a class should do without specifying how (supporting full abstraction and multiple inheritance of type via 'implements'). An abstract class is a blueprint that can contain both abstract methods and implemented concrete methods, instance variables, and constructors (supporting partial abstraction and single inheritance via 'extends'). Use an interface when unrelated classes share behavior, and an abstract class when closely related classes share state and core implementation."
+  },
+  {
+    "instruction": "How does @RestController work?",
+    "response": "@RestController is a convenience annotation in Spring Boot that combines @Controller and @ResponseBody. When applied to a class, it marks the class as a web request handler where every handler method automatically serializes its return value directly into the HTTP response body as JSON or XML (using Jackson by default), eliminating the need to annotate every method with @ResponseBody."
+  },
+  {
+    "instruction": "What is Spring Data JPA?",
+    "response": "Spring Data JPA is a framework that simplifies database access in Java by building on top of JPA (Java Persistence API) and Hibernate. It provides repository interfaces like JpaRepository and CrudRepository, allowing developers to perform CRUD operations, pagination, sorting, and dynamic query execution without writing boilerplate SQL or DAO implementation code."
+  },
+  {
+    "instruction": "Write a simple REST endpoint in Spring Boot.",
+    "response": "@RestController\n@RequestMapping(\"/api/users\")\npublic class UserController {\n    @GetMapping(\"/{id}\")\n    public ResponseEntity<User> getUserById(@PathVariable Long id) {\n        User user = userService.findById(id);\n        return ResponseEntity.ok(user);\n    }\n}"
+  },
+  {
+    "instruction": "Explain SQL JOIN.",
+    "response": "A SQL JOIN combines columns from two or more tables based on a related column between them. Common types include: INNER JOIN (returns rows with matching values in both tables), LEFT JOIN (returns all rows from the left table and matched rows from the right), RIGHT JOIN (returns all rows from the right table and matched rows from the left), and FULL OUTER JOIN (returns all records when there is a match in either table)."
+  },
+  {
+    "instruction": "What is @Transactional?",
+    "response": "@Transactional is a Spring annotation that defines the scope of a database transaction. When placed on a method or class, Spring wraps the execution in a transaction interceptor; if the method executes successfully, the transaction commits, but if an uncaught RuntimeException or Error occurs, the transaction automatically rolls back to maintain database consistency (ACID properties)."
+  },
+  {
+    "instruction": "What are the four pillars of Object-Oriented Programming (OOP) in Java?",
+    "response": "The four pillars of OOP in Java are Encapsulation (bundling data and methods together while restricting direct access via private fields and getters/setters), Abstraction (hiding implementation details and showing only essential features via abstract classes and interfaces), Inheritance (enabling a subclass to acquire properties and methods of a parent class using 'extends'), and Polymorphism (allowing one interface or method to perform different actions via method overriding and overloading)."
+  },
+  {
+    "instruction": "Explain the difference between checked and unchecked exceptions in Java.",
+    "response": "In Java, checked exceptions inherit from Exception (excluding RuntimeException) and must be either caught with a try-catch block or declared in the method signature with 'throws' at compile time (e.g., IOException, SQLException). Unchecked exceptions inherit from RuntimeException or Error and represent runtime bugs or unrecoverable conditions that do not require mandatory handling at compile time (e.g., NullPointerException, IllegalArgumentException)."
+  },
+  {
+    "instruction": "What is the role of DTOs (Data Transfer Objects) in Spring Boot REST APIs?",
+    "response": "A Data Transfer Object (DTO) is an object that carries data between processes or layers (such as between the REST controller and client) without containing business logic. DTOs prevent exposing internal database entity structures, protect sensitive fields (like passwords), optimize payload size, and allow independent validation of client inputs using Bean Validation annotations like @NotNull and @Email."
+  },
+  {
+    "instruction": "Explain the layered architecture: Controller, Service, and Repository in Spring Boot.",
+    "response": "The three-tier architecture separates concerns into: 1) Controller layer (@RestController) which handles incoming HTTP requests, performs input validation, and returns HTTP responses; 2) Service layer (@Service) which contains business logic, transaction management, and coordinates domain rules; 3) Repository layer (@Repository) which interacts with the database to perform CRUD queries and persistence."
+  },
+  {
+    "instruction": "How do you validate input payloads in Spring Boot REST APIs?",
+    "response": "Input validation is achieved using Jakarta Bean Validation. You annotate DTO fields with constraints like @NotNull, @NotBlank, @Size, or @Min, and annotate the method parameter in the @RestController with @Valid or @Validated (e.g., public ResponseEntity<?> create(@Valid @RequestBody UserDTO dto)). If validation fails, Spring throws MethodArgumentNotValidException with a 400 Bad Request status."
+  },
+  {
+    "instruction": "What is the difference between @GetMapping, @PostMapping, @PutMapping, and @DeleteMapping?",
+    "response": "These are specialized shortcut annotations for HTTP methods in Spring MVC: @GetMapping retrieves resources (safe and idempotent), @PostMapping creates new resources, @PutMapping updates or replaces existing resources (idempotent), and @DeleteMapping removes resources (idempotent)."
+  },
+  {
+    "instruction": "Explain the concept of Inversion of Control (IoC) in Spring.",
+    "response": "Inversion of Control (IoC) is a software design principle where the control of object creation, configuration, and lifecycle management is transferred from the application code to a central container (the Spring IoC container / ApplicationContext). Instead of objects instantiating their own dependencies, the container creates and injects them."
+  },
+  {
+    "instruction": "How does Spring Boot auto-configuration work?",
+    "response": "Spring Boot auto-configuration automatically configures beans and components based on the jar dependencies present on the classpath, system properties, and existing bean definitions. It is triggered by @EnableAutoConfiguration (included in @SpringBootApplication) and uses conditional annotations like @ConditionalOnClass and @ConditionalOnMissingBean to provide sensible defaults without overriding custom developer configurations."
+  },
+  {
+    "instruction": "What is the difference between WHERE and HAVING clauses in SQL?",
+    "response": "The WHERE clause filters individual rows before any grouping occurs and cannot be used with aggregate functions (SUM, AVG, COUNT). The HAVING clause filters grouped rows after the GROUP BY clause has aggregated the data and works directly with aggregate function conditions."
+  },
+  {
+    "instruction": "What is the N+1 select problem in Hibernate/JPA and how do you resolve it?",
+    "response": "The N+1 select problem occurs when fetching a parent entity executes 1 query, and accessing its lazy-loaded child collection across N parents triggers N additional queries (1 + N queries total). It can be resolved by using JOIN FETCH in JPQL queries, using @EntityGraph to specify eager fetch attributes, or setting batch fetch size."
+  },
+  {
+    "instruction": "What is the purpose of @PathVariable and @RequestParam in Spring MVC?",
+    "response": "@PathVariable extracts values embedded directly in the URI path template (e.g., /users/{id} maps to @PathVariable Long id). @RequestParam extracts query parameters from the URL query string (e.g., /users?status=active maps to @RequestParam String status) or form data."
+  },
+  {
+    "instruction": "Explain ACID properties in relational database management systems.",
+    "response": "ACID stands for: Atomicity (all operations in a transaction succeed or all fail together), Consistency (a transaction transitions the database from one valid state to another satisfying all constraints), Isolation (concurrent transactions execute independently without interference), and Durability (once committed, changes are permanently saved even in the event of a system crash)."
+  },
+  {
+    "instruction": "What is polymorphism in Java? Give an example.",
+    "response": "Polymorphism allows an entity to take multiple forms. In Java, compile-time polymorphism is achieved via method overloading (methods with the same name but different parameter lists), while runtime polymorphism is achieved via method overriding (a subclass provides a specific implementation of a method defined in its superclass, resolved dynamically at runtime through dynamic method dispatch)."
+  },
+  {
+    "instruction": "What is the difference between equals() and == in Java?",
+    "response": "In Java, '==' compares memory references for objects to see if both references point to the exact same memory location (and compares raw primitive values). The 'equals()' method compares object contents or logical equivalence as defined by the class's overridden equals() implementation (e.g., comparing string characters in String.equals())."
+  },
+  {
+    "instruction": "What is the difference between application.properties and application.yml in Spring Boot?",
+    "response": "application.properties uses a flat key-value format (server.port=8080), while application.yml uses YAML hierarchical indentation format (server:\\n  port: 8080). Both serve the exact same configuration purpose in Spring Boot, but YAML reduces repetition for deeply nested configuration keys."
+  },
+  {
+    "instruction": "How do you handle exceptions globally in Spring Boot?",
+    "response": "Global exception handling in Spring Boot is implemented using @ControllerAdvice or @RestControllerAdvice along with @ExceptionHandler methods. This centralizes error handling across all controllers, allowing you to catch specific exceptions (e.g., ResourceNotFoundException) and return structured, consistent JSON error responses with appropriate HTTP status codes."
+  },
+  {
+    "instruction": "What is a database primary key and foreign key?",
+    "response": "A primary key is a column or set of columns that uniquely identifies each row in a database table; it must contain unique, non-null values. A foreign key is a column or set of columns in one table that references the primary key of another table, establishing a relationship and enforcing referential integrity between the tables."
+  },
+  {
+    "instruction": "What is constructor injection in Spring Boot and why is it preferred over field injection?",
+    "response": "Constructor injection passes dependencies into a class via its constructor. It is preferred over field injection (@Autowired on private fields) because it enables immutability (fields can be marked final), guarantees dependencies are never null upon instantiation, simplifies unit testing without reflection or Spring test runners, and detects circular dependencies at startup."
+  },
+  {
+    "instruction": "What is the difference between JPA and Hibernate?",
+    "response": "JPA (Java Persistence API / Jakarta Persistence) is an official specification and set of interfaces defining how Java objects map to relational databases. Hibernate is a concrete, widely-used ORM (Object-Relational Mapping) implementation of the JPA specification that provides the actual engine executing the mapping, caching, and SQL generation."
+  },
+  {
+    "instruction": "What is encapsulation in Java and how is it implemented?",
+    "response": "Encapsulation is the practice of keeping fields within a class private and providing access to them via public methods (getters and setters). It protects an object's internal state from unintended external modification and allows the class to enforce validation rules before updating its internal data."
+  },
+  {
+    "instruction": "What is an index in a database and what are its trade-offs?",
+    "response": "An index is a database data structure (commonly a B-tree) that improves the speed of data retrieval operations on a table at the cost of additional storage space and slower write operations (INSERT, UPDATE, DELETE), because the index must be updated every time table data changes."
+  },
+  {
+    "instruction": "What is the purpose of @Entity and @Table in JPA?",
+    "response": "@Entity specifies that a Java class is a JPA entity whose state is managed by the persistence context and mapped to a relational database table. @Table is an optional annotation used to specify the exact table name, schema, or unique constraints if the table name differs from the class name."
+  },
+  {
+    "instruction": "What is the difference between pessimistic and optimistic locking in databases?",
+    "response": "Optimistic locking assumes collisions rarely happen and validates that no other transaction updated the record by checking a version column (@Version in JPA) at commit time; if modified, an OptimisticLockException is thrown. Pessimistic locking assumes collisions are likely and locks the database row directly (SELECT FOR UPDATE) preventing concurrent access until the transaction completes."
+  }
+]

@@ -1,0 +1,317 @@
+{
+  "metadata": {
+    "system_id": "minigpt_baseline",
+    "display_name": "MiniGPT Baseline (Phase 8)",
+    "category": "from_scratch",
+    "architecture": "Custom Decoder-only Transformer (MiniGPT)",
+    "tokenizer_type": "Character-level CharTokenizer",
+    "vocabulary_size": 52,
+    "context_length": 64,
+    "n_layer": 2,
+    "n_head": 4,
+    "n_embd": 64,
+    "total_parameters": 110336,
+    "trainable_parameters": 110336,
+    "frozen_parameters": 0,
+    "trainable_percentage": 100.0,
+    "checkpoint_size_mb": 1.33,
+    "training_method": "From-scratch pretraining (Full parameter updates)",
+    "training_dataset": "Shakespeare Coriolanus (data/coriolanus.txt)",
+    "training_steps": 150,
+    "training_time": "8.37s",
+    "hardware": "CPU (Intel 12-core)"
+  },
+  "mode": "deterministic",
+  "generation_config": {
+    "max_new_tokens": 80,
+    "temperature": 0.0,
+    "top_k": null,
+    "device": "cpu"
+  },
+  "aggregates": {
+    "total_prompts": 13,
+    "successful_prompts": 1,
+    "failed_or_oov_prompts": 12,
+    "average_generation_time_sec": 0.3592,
+    "average_tokens_per_sec": 222.69,
+    "average_distinct_1": 0.6,
+    "average_distinct_2": 0.9286,
+    "average_repetition_rate": 0.4,
+    "average_domain_keywords_found": 0.0
+  },
+  "prompt_results": [
+    {
+      "status": "oov_rejected",
+      "output": "",
+      "error": "Character vocabulary mismatch: prompt contains characters not in vocabulary ['P', 'x']",
+      "generated_tokens": 0,
+      "generation_time_sec": 0.0,
+      "tokens_per_sec": 0.0,
+      "metrics": {
+        "char_length": 0,
+        "word_count": 0,
+        "distinct_1": 0.0,
+        "distinct_2": 0.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p01_oop",
+      "category": "Java OOP",
+      "prompt": "Explain the four pillars of OOP."
+    },
+    {
+      "status": "oov_rejected",
+      "output": "",
+      "error": "Character vocabulary mismatch: prompt contains characters not in vocabulary ['J', 'x']",
+      "generated_tokens": 0,
+      "generation_time_sec": 0.0,
+      "tokens_per_sec": 0.0,
+      "metrics": {
+        "char_length": 0,
+        "word_count": 0,
+        "distinct_1": 0.0,
+        "distinct_2": 0.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p02_inheritance",
+      "category": "Inheritance",
+      "prompt": "Explain inheritance in Java."
+    },
+    {
+      "status": "oov_rejected",
+      "output": "",
+      "error": "Character vocabulary mismatch: prompt contains characters not in vocabulary ['J']",
+      "generated_tokens": 0,
+      "generation_time_sec": 0.0,
+      "tokens_per_sec": 0.0,
+      "metrics": {
+        "char_length": 0,
+        "word_count": 0,
+        "distinct_1": 0.0,
+        "distinct_2": 0.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p03_interfaces",
+      "category": "Interfaces",
+      "prompt": "What is an interface in Java?"
+    },
+    {
+      "status": "oov_rejected",
+      "output": "",
+      "error": "Character vocabulary mismatch: prompt contains characters not in vocabulary ['J', 'x']",
+      "generated_tokens": 0,
+      "generation_time_sec": 0.0,
+      "tokens_per_sec": 0.0,
+      "metrics": {
+        "char_length": 0,
+        "word_count": 0,
+        "distinct_1": 0.0,
+        "distinct_2": 0.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p04_exceptions",
+      "category": "Exception Handling",
+      "prompt": "Explain exception handling in Java."
+    },
+    {
+      "status": "oov_rejected",
+      "output": "",
+      "error": "Character vocabulary mismatch: prompt contains characters not in vocabulary ['J', 'x']",
+      "generated_tokens": 0,
+      "generation_time_sec": 0.0,
+      "tokens_per_sec": 0.0,
+      "metrics": {
+        "char_length": 0,
+        "word_count": 0,
+        "distinct_1": 0.0,
+        "distinct_2": 0.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p05_collections",
+      "category": "Collections",
+      "prompt": "Explain List and Map in Java."
+    },
+    {
+      "status": "success",
+      "output": "Whe Citititize Cizen:\nWhe Cizen:\nWhen:\nWhen:\nWhe he he he atous titithe the t",
+      "full_output": "What is dependency injection in Spring Boot?\n\n\nWhe Citititize Cizen:\nWhe Cizen:\nWhen:\nWhen:\nWhe he he he atous titithe the t",
+      "generated_tokens": 80,
+      "generation_time_sec": 0.3592,
+      "tokens_per_sec": 222.69,
+      "metrics": {
+        "char_length": 80,
+        "word_count": 15,
+        "distinct_1": 0.6,
+        "distinct_2": 0.9286,
+        "repetition_rate": 0.4,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p06_di",
+      "category": "Dependency Injection",
+      "prompt": "What is dependency injection in Spring Boot?"
+    },
+    {
+      "status": "oov_rejected",
+      "output": "",
+      "error": "Character vocabulary mismatch: prompt contains characters not in vocabulary ['@']",
+      "generated_tokens": 0,
+      "generation_time_sec": 0.0,
+      "tokens_per_sec": 0.0,
+      "metrics": {
+        "char_length": 0,
+        "word_count": 0,
+        "distinct_1": 0.0,
+        "distinct_2": 0.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p07_rest_api",
+      "category": "Spring Boot REST API",
+      "prompt": "How does @RestController work in Spring Boot?"
+    },
+    {
+      "status": "oov_rejected",
+      "output": "",
+      "error": "Character vocabulary mismatch: prompt contains characters not in vocabulary ['D', 'J', 'P']",
+      "generated_tokens": 0,
+      "generation_time_sec": 0.0,
+      "tokens_per_sec": 0.0,
+      "metrics": {
+        "char_length": 0,
+        "word_count": 0,
+        "distinct_1": 0.0,
+        "distinct_2": 0.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p08_jpa",
+      "category": "JPA & Persistence",
+      "prompt": "What is Spring Data JPA?"
+    },
+    {
+      "status": "oov_rejected",
+      "output": "",
+      "error": "Character vocabulary mismatch: prompt contains characters not in vocabulary ['J', 'Q', 'x']",
+      "generated_tokens": 0,
+      "generation_time_sec": 0.0,
+      "tokens_per_sec": 0.0,
+      "metrics": {
+        "char_length": 0,
+        "word_count": 0,
+        "distinct_1": 0.0,
+        "distinct_2": 0.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p09_sql",
+      "category": "SQL",
+      "prompt": "Explain SQL JOIN."
+    },
+    {
+      "status": "oov_rejected",
+      "output": "",
+      "error": "Character vocabulary mismatch: prompt contains characters not in vocabulary ['0', '2', '4', '5', 'P', 'x']",
+      "generated_tokens": 0,
+      "generation_time_sec": 0.0,
+      "tokens_per_sec": 0.0,
+      "metrics": {
+        "char_length": 0,
+        "word_count": 0,
+        "distinct_1": 0.0,
+        "distinct_2": 0.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p10_status_codes",
+      "category": "HTTP Status Codes",
+      "prompt": "Explain HTTP status codes 200, 404, and 500."
+    },
+    {
+      "status": "oov_rejected",
+      "output": "",
+      "error": "Character vocabulary mismatch: prompt contains characters not in vocabulary ['J', 'P', 'x']",
+      "generated_tokens": 0,
+      "generation_time_sec": 0.0,
+      "tokens_per_sec": 0.0,
+      "metrics": {
+        "char_length": 0,
+        "word_count": 0,
+        "distinct_1": 0.0,
+        "distinct_2": 0.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p11_debugging",
+      "category": "Debugging",
+      "prompt": "How do you fix a NullPointerException in Java?"
+    },
+    {
+      "status": "oov_rejected",
+      "output": "",
+      "error": "Character vocabulary mismatch: prompt contains characters not in vocabulary ['{']",
+      "generated_tokens": 0,
+      "generation_time_sec": 0.0,
+      "tokens_per_sec": 0.0,
+      "metrics": {
+        "char_length": 0,
+        "word_count": 0,
+        "distinct_1": 0.0,
+        "distinct_2": 0.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p12_codegen",
+      "category": "Simple Code Generation",
+      "prompt": "public class UserService {"
+    },
+    {
+      "status": "oov_rejected",
+      "output": "",
+      "error": "Character vocabulary mismatch: prompt contains characters not in vocabulary ['@']",
+      "generated_tokens": 0,
+      "generation_time_sec": 0.0,
+      "tokens_per_sec": 0.0,
+      "metrics": {
+        "char_length": 0,
+        "word_count": 0,
+        "distinct_1": 0.0,
+        "distinct_2": 0.0,
+        "repetition_rate": 0.0,
+        "domain_keywords_found": 0,
+        "domain_keywords_list": [],
+        "syntax_score": 0
+      },
+      "prompt_id": "p13_code_explanation",
+      "category": "Explanation of Code",
+      "prompt": "What does @Transactional do in Spring Boot?"
+    }
+  ]
+}

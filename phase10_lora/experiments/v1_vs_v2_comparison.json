@@ -1,0 +1,122 @@
+[
+  {
+    "prompt": "What is Java?",
+    "v1": {
+      "response": "Java is defined using the following syntax:\n{ var method = @ @param name = @param type = @param type = @param type = @param type = @param type = @param type = @param Type = @param Type = @param Type = @param Injection : (",
+      "tokens": 60,
+      "latency_sec": 1.794,
+      "throughput_tok_s": 33.5
+    },
+    "v2": {
+      "response": "Java provides APIs to perform actions in multiple languages, including client-side and server-side; it can be used as part of any business application (e.-commerce), or both. It has been implemented using java's native API for various purposes ranging from human interface design concepts to network management systems (",
+      "tokens": 60,
+      "latency_sec": 1.862,
+      "throughput_tok_s": 32.2
+    }
+  },
+  {
+    "prompt": "Is Java a programming language?",
+    "v1": {
+      "response": "Java is defined by the following three main types:",
+      "tokens": 10,
+      "latency_sec": 0.341,
+      "throughput_tok_s": 29.3
+    },
+    "v2": {
+      "response": "Java provides APIs to perform actions in multiple languages, including client-side and server/client side (eBay), Web Services, Server Management (EAS) systems, Service Workers, Object Oriented Code Execution (SaaS), Internet Explorer 2 Client implementations, EIS management, Data Exchange Protocol",
+      "tokens": 60,
+      "latency_sec": 1.949,
+      "throughput_tok_s": 30.8
+    }
+  },
+  {
+    "prompt": "What is a class in Java?",
+    "v1": {
+      "response": "A class defined by the name 'class' is a method that takes a class name, assigns a name, and returns a value. It inherits an object with a class name.",
+      "tokens": 37,
+      "latency_sec": 1.128,
+      "throughput_tok_s": 32.8
+    },
+    "v2": {
+      "response": "A subclass of a method returns 'a' or 'b' (in other words, it replaces its own constructor with \"1\", which actually makes sense).",
+      "tokens": 32,
+      "latency_sec": 1.05,
+      "throughput_tok_s": 30.5
+    }
+  },
+  {
+    "prompt": "What is inheritance in Java?",
+    "v1": {
+      "response": "Object inheritance is a type property in Java that is inherited from the class and then inherited directly from the class. The inheritance is inherited from class members, so an instantiation of the class is called with the method method method as the result of the method method being passed through. If the method instance is",
+      "tokens": 60,
+      "latency_sec": 1.811,
+      "throughput_tok_s": 33.1
+    },
+    "v2": {
+      "response": "In Java, you create new classes (or methods) to manipulate values and perform functions within your class hierarchy or subclass's fields; this makes it possible for objects to be created automatically by using their own properties such as :val , instance_of(type)) .",
+      "tokens": 53,
+      "latency_sec": 1.676,
+      "throughput_tok_s": 31.6
+    }
+  },
+  {
+    "prompt": "Write a Java function to add two numbers.",
+    "v1": {
+      "response": "Write a Java function to assign three numbers.",
+      "tokens": 9,
+      "latency_sec": 0.303,
+      "throughput_tok_s": 29.7
+    },
+    "v2": {
+      "response": "A java variable returns 'int' (or, instead of returning values like #1), which can be used for any type or class in your application code and its associated functions as well as other non-null parameters such as NONE_INVALID , EJECTIONAL(), AND BEGIN",
+      "tokens": 60,
+      "latency_sec": 1.867,
+      "throughput_tok_s": 32.1
+    }
+  },
+  {
+    "prompt": "Explain what a REST API is.",
+    "v1": {
+      "response": "A REST API provides a REST API to perform specific actions, including:",
+      "tokens": 14,
+      "latency_sec": 0.454,
+      "throughput_tok_s": 30.8
+    },
+    "v2": {
+      "response": "A REST API provides access to data stored on top of its own state and requests directly from external APIs (e-commerce, database management, analytics, etc.).",
+      "tokens": 32,
+      "latency_sec": 1.043,
+      "throughput_tok_s": 30.7
+    }
+  },
+  {
+    "prompt": "What is Spring Boot?",
+    "v1": {
+      "response": "Spring Boot is a flexible, lightweight, modular, and accessible command line interface that enables you to execute custom code for clients. Spring Boot provides fast, flexible and easy configuration and supports multiple deployment and configuration configurations.",
+      "tokens": 42,
+      "latency_sec": 1.546,
+      "throughput_tok_s": 27.2
+    },
+    "v2": {
+      "response": "Spring Boot provides support for RESTful, mobile apps (mobile-based applications), and services via APIs such as Laravel 3.0 or OO2; its core components include MVC 4.3 which enables you to perform complex tasks in real time using simple API calls rather than static queries like",
+      "tokens": 60,
+      "latency_sec": 1.89,
+      "throughput_tok_s": 31.7
+    }
+  },
+  {
+    "prompt": "Hello",
+    "v1": {
+      "response": "Hello, first time! Request a response.",
+      "tokens": 9,
+      "latency_sec": 0.301,
+      "throughput_tok_s": 29.9
+    },
+    "v2": {
+      "response": "This question was raised in #1 of this series",
+      "tokens": 10,
+      "latency_sec": 0.356,
+      "throughput_tok_s": 28.1
+    }
+  }
+]
