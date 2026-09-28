@@ -116,7 +116,6 @@ export async function streamGenerate(payload, { onToken, onComplete, onError, si
     }
   } catch (err) {
     if (err.name === 'AbortError') {
-      console.log('Stream aborted by user');
       return;
     }
     onError(err);
